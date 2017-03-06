@@ -72,6 +72,8 @@ public class Menu extends javax.swing.JFrame {
         mnuItemCBCAllotment = new javax.swing.JMenuItem();
         mnuItemWBCAllotment = new javax.swing.JMenuItem();
         mnuItemUrinalysisAllotment = new javax.swing.JMenuItem();
+        mnuFinalReport = new javax.swing.JMenu();
+        mnuItemFinalPatientReport = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -264,6 +266,18 @@ public class Menu extends javax.swing.JFrame {
 
         menuBar.add(mnuTestAllotment);
 
+        mnuFinalReport.setText("Final Report");
+
+        mnuItemFinalPatientReport.setText("Final Patient's Test Report and PDF");
+        mnuItemFinalPatientReport.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuItemFinalPatientReportActionPerformed(evt);
+            }
+        });
+        mnuFinalReport.add(mnuItemFinalPatientReport);
+
+        menuBar.add(mnuFinalReport);
+
         setJMenuBar(menuBar);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -428,6 +442,13 @@ public class Menu extends javax.swing.JFrame {
         urinalysisreport.setVisible(true);
     }//GEN-LAST:event_mnuItemUrinalysisReportActionPerformed
 
+    private void mnuItemFinalPatientReportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuItemFinalPatientReportActionPerformed
+        // TODO add your handling code here:
+        FinalTestReport finaltestreport = new FinalTestReport();
+        desktopPane.add(finaltestreport);
+        finaltestreport.setVisible(true);
+    }//GEN-LAST:event_mnuItemFinalPatientReportActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -470,11 +491,13 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JMenu mnuAccessibility;
     private javax.swing.JMenuItem mnuBiochemistry;
     private javax.swing.JMenu mnuExit;
+    private javax.swing.JMenu mnuFinalReport;
     private javax.swing.JMenuItem mnuItemBiochemistryAllotment;
     private javax.swing.JMenuItem mnuItemBiochemistryReport;
     private javax.swing.JMenuItem mnuItemCBC;
     private javax.swing.JMenuItem mnuItemCBCAllotment;
     private javax.swing.JMenuItem mnuItemCBCReport;
+    private javax.swing.JMenuItem mnuItemFinalPatientReport;
     private javax.swing.JMenuItem mnuItemHematology;
     private javax.swing.JMenuItem mnuItemHematologyAllotment;
     private javax.swing.JMenuItem mnuItemHematologyReport;

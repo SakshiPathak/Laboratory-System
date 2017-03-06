@@ -12,6 +12,7 @@
     <class>in.laboratory.entity.WBCDifferentialCount</class>
     <class>in.laboratory.gui.Wbcdifferentialcount</class>
     <class>in.laboratory.gui.Completebloodcount</class>
+    <class>in.laboratory.entity.FinalTestReport</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/laboratory?zeroDateTimeBehavior=convertToNull"/>
       <property name="javax.persistence.jdbc.user" value="root"/>

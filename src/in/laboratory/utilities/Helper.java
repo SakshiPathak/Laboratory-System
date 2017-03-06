@@ -8,6 +8,7 @@ package in.laboratory.utilities;
 //import in.laboratory.entity.User;
 import in.laboratory.entity.controller.BiochemistryJpaController;
 import in.laboratory.entity.controller.CompletebloodcountJpaController;
+import in.laboratory.entity.controller.FinalTestReportJpaController;
 import in.laboratory.entity.controller.HematologyJpaController;
 import in.laboratory.entity.controller.PatientJpaController;
 import in.laboratory.entity.controller.RoleJpaController;
@@ -77,6 +78,12 @@ public class Helper {
     
     public static UrinalysisJpaController getUrinalysisControllerInstance() {
         return new UrinalysisJpaController(
+            Persistence.createEntityManagerFactory("LaboratoryPU")
+        );
+    }
+    
+    public static FinalTestReportJpaController getFinalTestReportControllerInstance() {
+        return new FinalTestReportJpaController(
             Persistence.createEntityManagerFactory("LaboratoryPU")
         );
     }
