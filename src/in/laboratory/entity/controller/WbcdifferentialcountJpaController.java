@@ -5,8 +5,8 @@
  */
 package in.laboratory.entity.controller;
 
-import in.laboratory.entity.WBCDifferentialCount;
 import in.laboratory.entity.controller.exceptions.NonexistentEntityException;
+import in.laboratory.gui.Wbcdifferentialcount;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.EntityManager;
@@ -20,9 +20,9 @@ import javax.persistence.criteria.Root;
  *
  * @author sakshi
  */
-public class WBCDifferentialCountJpaController implements Serializable {
+public class WbcdifferentialcountJpaController implements Serializable {
 
-    public WBCDifferentialCountJpaController(EntityManagerFactory emf) {
+    public WbcdifferentialcountJpaController(EntityManagerFactory emf) {
         this.emf = emf;
     }
     private EntityManagerFactory emf = null;
@@ -31,12 +31,12 @@ public class WBCDifferentialCountJpaController implements Serializable {
         return emf.createEntityManager();
     }
 
-    public void create(WBCDifferentialCount WBCDifferentialCount) {
+    public void create(Wbcdifferentialcount wbcdifferentialcount) {
         EntityManager em = null;
         try {
             em = getEntityManager();
             em.getTransaction().begin();
-            em.persist(WBCDifferentialCount);
+            em.persist(wbcdifferentialcount);
             em.getTransaction().commit();
         } finally {
             if (em != null) {
@@ -45,19 +45,19 @@ public class WBCDifferentialCountJpaController implements Serializable {
         }
     }
 
-    public void edit(WBCDifferentialCount WBCDifferentialCount) throws NonexistentEntityException, Exception {
+    public void edit(Wbcdifferentialcount wbcdifferentialcount) throws NonexistentEntityException, Exception {
         EntityManager em = null;
         try {
             em = getEntityManager();
             em.getTransaction().begin();
-            WBCDifferentialCount = em.merge(WBCDifferentialCount);
+            wbcdifferentialcount = em.merge(wbcdifferentialcount);
             em.getTransaction().commit();
         } catch (Exception ex) {
             String msg = ex.getLocalizedMessage();
             if (msg == null || msg.length() == 0) {
-                Long id = WBCDifferentialCount.getId();
-                if (findWBCDifferentialCount(id) == null) {
-                    throw new NonexistentEntityException("The wBCDifferentialCount with id " + id + " no longer exists.");
+                Long id = wbcdifferentialcount.getId();
+                if (findWbcdifferentialcount(id) == null) {
+                    throw new NonexistentEntityException("The wbcdifferentialcount with id " + id + " no longer exists.");
                 }
             }
             throw ex;
@@ -73,14 +73,14 @@ public class WBCDifferentialCountJpaController implements Serializable {
         try {
             em = getEntityManager();
             em.getTransaction().begin();
-            WBCDifferentialCount WBCDifferentialCount;
+            Wbcdifferentialcount wbcdifferentialcount;
             try {
-                WBCDifferentialCount = em.getReference(WBCDifferentialCount.class, id);
-                WBCDifferentialCount.getId();
+                wbcdifferentialcount = em.getReference(Wbcdifferentialcount.class, id);
+                wbcdifferentialcount.getId();
             } catch (EntityNotFoundException enfe) {
-                throw new NonexistentEntityException("The WBCDifferentialCount with id " + id + " no longer exists.", enfe);
+                throw new NonexistentEntityException("The wbcdifferentialcount with id " + id + " no longer exists.", enfe);
             }
-            em.remove(WBCDifferentialCount);
+            em.remove(wbcdifferentialcount);
             em.getTransaction().commit();
         } finally {
             if (em != null) {
@@ -89,19 +89,19 @@ public class WBCDifferentialCountJpaController implements Serializable {
         }
     }
 
-    public List<WBCDifferentialCount> findWBCDifferentialCountEntities() {
-        return findWBCDifferentialCountEntities(true, -1, -1);
+    public List<Wbcdifferentialcount> findWbcdifferentialcountEntities() {
+        return findWbcdifferentialcountEntities(true, -1, -1);
     }
 
-    public List<WBCDifferentialCount> findWBCDifferentialCountEntities(int maxResults, int firstResult) {
-        return findWBCDifferentialCountEntities(false, maxResults, firstResult);
+    public List<Wbcdifferentialcount> findWbcdifferentialcountEntities(int maxResults, int firstResult) {
+        return findWbcdifferentialcountEntities(false, maxResults, firstResult);
     }
 
-    private List<WBCDifferentialCount> findWBCDifferentialCountEntities(boolean all, int maxResults, int firstResult) {
+    private List<Wbcdifferentialcount> findWbcdifferentialcountEntities(boolean all, int maxResults, int firstResult) {
         EntityManager em = getEntityManager();
         try {
             CriteriaQuery cq = em.getCriteriaBuilder().createQuery();
-            cq.select(cq.from(WBCDifferentialCount.class));
+            cq.select(cq.from(Wbcdifferentialcount.class));
             Query q = em.createQuery(cq);
             if (!all) {
                 q.setMaxResults(maxResults);
@@ -113,20 +113,20 @@ public class WBCDifferentialCountJpaController implements Serializable {
         }
     }
 
-    public WBCDifferentialCount findWBCDifferentialCount(Long id) {
+    public Wbcdifferentialcount findWbcdifferentialcount(Long id) {
         EntityManager em = getEntityManager();
         try {
-            return em.find(WBCDifferentialCount.class, id);
+            return em.find(Wbcdifferentialcount.class, id);
         } finally {
             em.close();
         }
     }
 
-    public int getWBCDifferentialCountCount() {
+    public int getWbcdifferentialcountCount() {
         EntityManager em = getEntityManager();
         try {
             CriteriaQuery cq = em.getCriteriaBuilder().createQuery();
-            Root<WBCDifferentialCount> rt = cq.from(WBCDifferentialCount.class);
+            Root<Wbcdifferentialcount> rt = cq.from(Wbcdifferentialcount.class);
             cq.select(em.getCriteriaBuilder().count(rt));
             Query q = em.createQuery(cq);
             return ((Long) q.getSingleResult()).intValue();

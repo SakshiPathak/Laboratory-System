@@ -26,7 +26,15 @@ public class HematologyTestAllotmentFrame extends javax.swing.JInternalFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        bindingGroup = new org.jdesktop.beansbinding.BindingGroup();
 
+        LaboratoryPUEntityManager = java.beans.Beans.isDesignTime() ? null : javax.persistence.Persistence.createEntityManagerFactory("LaboratoryPU").createEntityManager();
+        patientQuery = java.beans.Beans.isDesignTime() ? null : LaboratoryPUEntityManager.createQuery("SELECT p FROM Patient p");
+        patientList = java.beans.Beans.isDesignTime() ? java.util.Collections.emptyList() : patientQuery.getResultList();
+        hematologyQuery = java.beans.Beans.isDesignTime() ? null : LaboratoryPUEntityManager.createQuery("SELECT h FROM Hematology h");
+        hematologyList = java.beans.Beans.isDesignTime() ? java.util.Collections.emptyList() : hematologyQuery.getResultList();
+        hematologyQuery1 = java.beans.Beans.isDesignTime() ? null : LaboratoryPUEntityManager.createQuery("SELECT h FROM Hematology h");
+        hematologyList1 = java.beans.Beans.isDesignTime() ? java.util.Collections.emptyList() : hematologyQuery1.getResultList();
         pnlPatientDetails = new javax.swing.JPanel();
         lblSearchByPatientName = new javax.swing.JLabel();
         cmbSearchByPatientName = new javax.swing.JComboBox();
@@ -126,17 +134,35 @@ public class HematologyTestAllotmentFrame extends javax.swing.JInternalFrame {
 
         cmbSearchByPatientName.setModel(new javax.swing.DefaultComboBoxModel(new String[] { " ", " " }));
 
+        org.jdesktop.beansbinding.ELProperty eLProperty = org.jdesktop.beansbinding.ELProperty.create("${resultList}");
+        org.jdesktop.swingbinding.JComboBoxBinding jComboBoxBinding = org.jdesktop.swingbinding.SwingBindings.createJComboBoxBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, patientQuery, eLProperty, cmbSearchByPatientName);
+        bindingGroup.addBinding(jComboBoxBinding);
+        org.jdesktop.beansbinding.Binding binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, patientQuery, org.jdesktop.beansbinding.ELProperty.create("${firstResult}"), cmbSearchByPatientName, org.jdesktop.beansbinding.BeanProperty.create("selectedItem"));
+        bindingGroup.addBinding(binding);
+
         lblPatientName.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         lblPatientName.setText("Name");
+
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, cmbSearchByPatientName, org.jdesktop.beansbinding.ELProperty.create("${selectedItem.firstName} ${selectedItem.lastName}"), txtPatientName, org.jdesktop.beansbinding.BeanProperty.create("text"));
+        bindingGroup.addBinding(binding);
 
         lblAge.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         lblAge.setText("Age");
 
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, cmbSearchByPatientName, org.jdesktop.beansbinding.ELProperty.create("${selectedItem.age}"), txtAge, org.jdesktop.beansbinding.BeanProperty.create("text"));
+        bindingGroup.addBinding(binding);
+
         lblGender.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         lblGender.setText("Gender");
 
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, cmbSearchByPatientName, org.jdesktop.beansbinding.ELProperty.create("${selectedItem.gender}"), txtGender, org.jdesktop.beansbinding.BeanProperty.create("text"));
+        bindingGroup.addBinding(binding);
+
         lblReferencedBy.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         lblReferencedBy.setText("Referenced By");
+
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, cmbSearchByPatientName, org.jdesktop.beansbinding.ELProperty.create("${selectedItem.referencedBy}"), txtReferencedBy, org.jdesktop.beansbinding.BeanProperty.create("text"));
+        bindingGroup.addBinding(binding);
 
         lblDate.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         lblDate.setText("Date");
@@ -210,39 +236,261 @@ public class HematologyTestAllotmentFrame extends javax.swing.JInternalFrame {
 
         jLabel7.setText("1.");
 
+        eLProperty = org.jdesktop.beansbinding.ELProperty.create("${resultList}");
+        jComboBoxBinding = org.jdesktop.swingbinding.SwingBindings.createJComboBoxBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, hematologyQuery, eLProperty, cmbTestName1);
+        bindingGroup.addBinding(jComboBoxBinding);
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, hematologyQuery, org.jdesktop.beansbinding.ELProperty.create("${firstResult}"), cmbTestName1, org.jdesktop.beansbinding.BeanProperty.create("selectedItem"));
+        bindingGroup.addBinding(binding);
+
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, cmbTestName1, org.jdesktop.beansbinding.ELProperty.create("${selectedItem.results}"), txtResults1, org.jdesktop.beansbinding.BeanProperty.create("text"));
+        bindingGroup.addBinding(binding);
+
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, cmbTestName1, org.jdesktop.beansbinding.ELProperty.create("${selectedItem.normalValues}"), txtNormalValues1, org.jdesktop.beansbinding.BeanProperty.create("text"));
+        bindingGroup.addBinding(binding);
+
         jLabel8.setText("2.");
+
+        eLProperty = org.jdesktop.beansbinding.ELProperty.create("${resultList}");
+        jComboBoxBinding = org.jdesktop.swingbinding.SwingBindings.createJComboBoxBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, hematologyQuery, eLProperty, cmbTestName2);
+        bindingGroup.addBinding(jComboBoxBinding);
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, hematologyQuery, org.jdesktop.beansbinding.ELProperty.create("${firstResult}"), cmbTestName2, org.jdesktop.beansbinding.BeanProperty.create("selectedItem"));
+        bindingGroup.addBinding(binding);
+
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, cmbTestName2, org.jdesktop.beansbinding.ELProperty.create("${selectedItem.results}"), txtResults2, org.jdesktop.beansbinding.BeanProperty.create("text"));
+        bindingGroup.addBinding(binding);
+
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, cmbTestName2, org.jdesktop.beansbinding.ELProperty.create("${selectedItem.normalValues}"), txtNormalValues2, org.jdesktop.beansbinding.BeanProperty.create("text"));
+        bindingGroup.addBinding(binding);
+
+        txtNormalValues2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNormalValues2ActionPerformed(evt);
+            }
+        });
 
         jLabel9.setText("3.");
 
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, cmbTestName3, org.jdesktop.beansbinding.ELProperty.create("${selectedItem.results}"), txtResults3, org.jdesktop.beansbinding.BeanProperty.create("text"));
+        bindingGroup.addBinding(binding);
+
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, cmbTestName3, org.jdesktop.beansbinding.ELProperty.create("${selectedItem.normalValues}"), txtNormalValues3, org.jdesktop.beansbinding.BeanProperty.create("text"));
+        bindingGroup.addBinding(binding);
+
+        eLProperty = org.jdesktop.beansbinding.ELProperty.create("${resultList}");
+        jComboBoxBinding = org.jdesktop.swingbinding.SwingBindings.createJComboBoxBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, hematologyQuery, eLProperty, cmbTestName3);
+        bindingGroup.addBinding(jComboBoxBinding);
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, hematologyQuery, org.jdesktop.beansbinding.ELProperty.create("${firstResult}"), cmbTestName3, org.jdesktop.beansbinding.BeanProperty.create("selectedItem"));
+        bindingGroup.addBinding(binding);
+
         jLabel10.setText("4.");
 
+        eLProperty = org.jdesktop.beansbinding.ELProperty.create("${resultList}");
+        jComboBoxBinding = org.jdesktop.swingbinding.SwingBindings.createJComboBoxBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, hematologyQuery, eLProperty, cmbTestName4);
+        bindingGroup.addBinding(jComboBoxBinding);
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, hematologyQuery, org.jdesktop.beansbinding.ELProperty.create("${firstResult}"), cmbTestName4, org.jdesktop.beansbinding.BeanProperty.create("selectedItem"));
+        bindingGroup.addBinding(binding);
+
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, cmbTestName4, org.jdesktop.beansbinding.ELProperty.create("${selectedItem.results}"), txtResults4, org.jdesktop.beansbinding.BeanProperty.create("text"));
+        bindingGroup.addBinding(binding);
+
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, cmbTestName4, org.jdesktop.beansbinding.ELProperty.create("${selectedItem.normalValues}"), txtNormalValues4, org.jdesktop.beansbinding.BeanProperty.create("text"));
+        bindingGroup.addBinding(binding);
+
+        eLProperty = org.jdesktop.beansbinding.ELProperty.create("${resultList}");
+        jComboBoxBinding = org.jdesktop.swingbinding.SwingBindings.createJComboBoxBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, hematologyQuery, eLProperty, cmbTestName5);
+        bindingGroup.addBinding(jComboBoxBinding);
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, hematologyQuery, org.jdesktop.beansbinding.ELProperty.create("${firstResult}"), cmbTestName5, org.jdesktop.beansbinding.BeanProperty.create("selectedItem"));
+        bindingGroup.addBinding(binding);
+
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, cmbTestName5, org.jdesktop.beansbinding.ELProperty.create("${selectedItem.results}"), txtResults5, org.jdesktop.beansbinding.BeanProperty.create("text"));
+        bindingGroup.addBinding(binding);
+
         jLabel11.setText("5.");
+
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, cmbTestName5, org.jdesktop.beansbinding.ELProperty.create("${selectedItem.normalValues}"), txtNormalValues5, org.jdesktop.beansbinding.BeanProperty.create("text"));
+        bindingGroup.addBinding(binding);
+
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, cmbTestName6, org.jdesktop.beansbinding.ELProperty.create("${selectedItem.results}"), txtResults6, org.jdesktop.beansbinding.BeanProperty.create("text"));
+        bindingGroup.addBinding(binding);
+
+        eLProperty = org.jdesktop.beansbinding.ELProperty.create("${resultList}");
+        jComboBoxBinding = org.jdesktop.swingbinding.SwingBindings.createJComboBoxBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, hematologyQuery, eLProperty, cmbTestName6);
+        bindingGroup.addBinding(jComboBoxBinding);
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, hematologyQuery, org.jdesktop.beansbinding.ELProperty.create("${firstResult}"), cmbTestName6, org.jdesktop.beansbinding.BeanProperty.create("selectedItem"));
+        bindingGroup.addBinding(binding);
+
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, cmbTestName6, org.jdesktop.beansbinding.ELProperty.create("${selectedItem.normalValues}"), txtNormalValues6, org.jdesktop.beansbinding.BeanProperty.create("text"));
+        bindingGroup.addBinding(binding);
 
         jLabel12.setText("6.");
 
         jLabel13.setText("7.");
 
+        eLProperty = org.jdesktop.beansbinding.ELProperty.create("${resultList}");
+        jComboBoxBinding = org.jdesktop.swingbinding.SwingBindings.createJComboBoxBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, hematologyQuery, eLProperty, cmbTestName7);
+        bindingGroup.addBinding(jComboBoxBinding);
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, hematologyQuery, org.jdesktop.beansbinding.ELProperty.create("${firstResult}"), cmbTestName7, org.jdesktop.beansbinding.BeanProperty.create("selectedItem"));
+        bindingGroup.addBinding(binding);
+
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, cmbTestName7, org.jdesktop.beansbinding.ELProperty.create("${selectedItem.results}"), txtResults7, org.jdesktop.beansbinding.BeanProperty.create("text"));
+        bindingGroup.addBinding(binding);
+
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, cmbTestName7, org.jdesktop.beansbinding.ELProperty.create("${selectedItem.normalValues}"), txtNormalValues7, org.jdesktop.beansbinding.BeanProperty.create("text"));
+        bindingGroup.addBinding(binding);
+
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, cmbTestName8, org.jdesktop.beansbinding.ELProperty.create("${selectedItem.normalValues}"), txtNormalValues8, org.jdesktop.beansbinding.BeanProperty.create("text"));
+        bindingGroup.addBinding(binding);
+
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, cmbTestName8, org.jdesktop.beansbinding.ELProperty.create("${selectedItem.results}"), txtResults8, org.jdesktop.beansbinding.BeanProperty.create("text"));
+        bindingGroup.addBinding(binding);
+
         jLabel14.setText("8.");
+
+        eLProperty = org.jdesktop.beansbinding.ELProperty.create("${resultList}");
+        jComboBoxBinding = org.jdesktop.swingbinding.SwingBindings.createJComboBoxBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, hematologyQuery, eLProperty, cmbTestName8);
+        bindingGroup.addBinding(jComboBoxBinding);
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, hematologyQuery, org.jdesktop.beansbinding.ELProperty.create("${firstResult}"), cmbTestName8, org.jdesktop.beansbinding.BeanProperty.create("selectedItem"));
+        bindingGroup.addBinding(binding);
+
+        eLProperty = org.jdesktop.beansbinding.ELProperty.create("${resultList}");
+        jComboBoxBinding = org.jdesktop.swingbinding.SwingBindings.createJComboBoxBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, hematologyQuery, eLProperty, cmbTestName9);
+        bindingGroup.addBinding(jComboBoxBinding);
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, hematologyQuery, org.jdesktop.beansbinding.ELProperty.create("${firstResult}"), cmbTestName9, org.jdesktop.beansbinding.BeanProperty.create("selectedItem"));
+        bindingGroup.addBinding(binding);
+
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, cmbTestName9, org.jdesktop.beansbinding.ELProperty.create("${selectedItem.results}"), txtResults9, org.jdesktop.beansbinding.BeanProperty.create("text"));
+        bindingGroup.addBinding(binding);
+
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, cmbTestName9, org.jdesktop.beansbinding.ELProperty.create("${selectedItem.normalValues}"), txtNormalValues9, org.jdesktop.beansbinding.BeanProperty.create("text"));
+        bindingGroup.addBinding(binding);
 
         jLabel15.setText("9.");
 
         jLabel16.setText("10.");
 
+        eLProperty = org.jdesktop.beansbinding.ELProperty.create("${resultList}");
+        jComboBoxBinding = org.jdesktop.swingbinding.SwingBindings.createJComboBoxBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, hematologyQuery, eLProperty, cmbTestName10);
+        bindingGroup.addBinding(jComboBoxBinding);
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, hematologyQuery, org.jdesktop.beansbinding.ELProperty.create("${firstResult}"), cmbTestName10, org.jdesktop.beansbinding.BeanProperty.create("selectedItem"));
+        bindingGroup.addBinding(binding);
+
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, cmbTestName10, org.jdesktop.beansbinding.ELProperty.create("${selectedItem.results}"), txtResults10, org.jdesktop.beansbinding.BeanProperty.create("text"));
+        bindingGroup.addBinding(binding);
+
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, cmbTestName10, org.jdesktop.beansbinding.ELProperty.create("${selectedItem.normalValues}"), txtNormalValues10, org.jdesktop.beansbinding.BeanProperty.create("text"));
+        bindingGroup.addBinding(binding);
+
         jLabel17.setText("11.");
+
+        eLProperty = org.jdesktop.beansbinding.ELProperty.create("${resultList}");
+        jComboBoxBinding = org.jdesktop.swingbinding.SwingBindings.createJComboBoxBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, hematologyQuery, eLProperty, cmbTestName11);
+        bindingGroup.addBinding(jComboBoxBinding);
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, hematologyQuery, org.jdesktop.beansbinding.ELProperty.create("${firstResult}"), cmbTestName11, org.jdesktop.beansbinding.BeanProperty.create("selectedItem"));
+        bindingGroup.addBinding(binding);
+
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, cmbTestName11, org.jdesktop.beansbinding.ELProperty.create("${selectedItem.results}"), txtResults11, org.jdesktop.beansbinding.BeanProperty.create("text"));
+        bindingGroup.addBinding(binding);
+
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, cmbTestName11, org.jdesktop.beansbinding.ELProperty.create("${selectedItem.normalValues}"), txtNormalValues11, org.jdesktop.beansbinding.BeanProperty.create("text"));
+        bindingGroup.addBinding(binding);
+
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, cmbTestName12, org.jdesktop.beansbinding.ELProperty.create("${selectedItem.results}"), txtResults12, org.jdesktop.beansbinding.BeanProperty.create("text"));
+        bindingGroup.addBinding(binding);
+
+        eLProperty = org.jdesktop.beansbinding.ELProperty.create("${resultList}");
+        jComboBoxBinding = org.jdesktop.swingbinding.SwingBindings.createJComboBoxBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, hematologyQuery, eLProperty, cmbTestName12);
+        bindingGroup.addBinding(jComboBoxBinding);
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, hematologyQuery, org.jdesktop.beansbinding.ELProperty.create("${firstResult}"), cmbTestName12, org.jdesktop.beansbinding.BeanProperty.create("selectedItem"));
+        bindingGroup.addBinding(binding);
+
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, cmbTestName12, org.jdesktop.beansbinding.ELProperty.create("${selectedItem.normalValues}"), txtNormalValues12, org.jdesktop.beansbinding.BeanProperty.create("text"));
+        bindingGroup.addBinding(binding);
 
         jLabel18.setText("12.");
 
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, cmbTestName13, org.jdesktop.beansbinding.ELProperty.create("${selectedItem.results}"), txtResults13, org.jdesktop.beansbinding.BeanProperty.create("text"));
+        bindingGroup.addBinding(binding);
+
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, cmbTestName13, org.jdesktop.beansbinding.ELProperty.create("${selectedItem.normalValues}"), txtNormalValues13, org.jdesktop.beansbinding.BeanProperty.create("text"));
+        bindingGroup.addBinding(binding);
+
         jLabel19.setText("13.");
+
+        eLProperty = org.jdesktop.beansbinding.ELProperty.create("${resultList}");
+        jComboBoxBinding = org.jdesktop.swingbinding.SwingBindings.createJComboBoxBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, hematologyQuery, eLProperty, cmbTestName13);
+        bindingGroup.addBinding(jComboBoxBinding);
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, hematologyQuery, org.jdesktop.beansbinding.ELProperty.create("${firstResult}"), cmbTestName13, org.jdesktop.beansbinding.BeanProperty.create("selectedItem"));
+        bindingGroup.addBinding(binding);
+
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, cmbTestName14, org.jdesktop.beansbinding.ELProperty.create("${selectedItem.results}"), txtResults14, org.jdesktop.beansbinding.BeanProperty.create("text"));
+        bindingGroup.addBinding(binding);
+
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, cmbTestName14, org.jdesktop.beansbinding.ELProperty.create("${selectedItem.normalValues}"), txtNormalValues14, org.jdesktop.beansbinding.BeanProperty.create("text"));
+        bindingGroup.addBinding(binding);
+
+        eLProperty = org.jdesktop.beansbinding.ELProperty.create("${resultList}");
+        jComboBoxBinding = org.jdesktop.swingbinding.SwingBindings.createJComboBoxBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, hematologyQuery, eLProperty, cmbTestName14);
+        bindingGroup.addBinding(jComboBoxBinding);
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, hematologyQuery, org.jdesktop.beansbinding.ELProperty.create("${firstResult}"), cmbTestName14, org.jdesktop.beansbinding.BeanProperty.create("selectedItem"));
+        bindingGroup.addBinding(binding);
 
         jLabel20.setText("14.");
 
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, cmbTestName15, org.jdesktop.beansbinding.ELProperty.create("${selectedItem.normalValues}"), txtNormalValues15, org.jdesktop.beansbinding.BeanProperty.create("text"));
+        bindingGroup.addBinding(binding);
+
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, cmbTestName15, org.jdesktop.beansbinding.ELProperty.create("${selectedItem.results}"), txtResults15, org.jdesktop.beansbinding.BeanProperty.create("text"));
+        bindingGroup.addBinding(binding);
+
+        eLProperty = org.jdesktop.beansbinding.ELProperty.create("${resultList}");
+        jComboBoxBinding = org.jdesktop.swingbinding.SwingBindings.createJComboBoxBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, hematologyQuery, eLProperty, cmbTestName15);
+        bindingGroup.addBinding(jComboBoxBinding);
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, hematologyQuery, org.jdesktop.beansbinding.ELProperty.create("${firstResult}"), cmbTestName15, org.jdesktop.beansbinding.BeanProperty.create("selectedItem"));
+        bindingGroup.addBinding(binding);
+
         jLabel21.setText("15.");
+
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, cmbTestName16, org.jdesktop.beansbinding.ELProperty.create("${selectedItem.normalValues}"), txtNormalValues16, org.jdesktop.beansbinding.BeanProperty.create("text"));
+        bindingGroup.addBinding(binding);
+
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, cmbTestName16, org.jdesktop.beansbinding.ELProperty.create("${selectedItem.results}"), txtResults16, org.jdesktop.beansbinding.BeanProperty.create("text"));
+        bindingGroup.addBinding(binding);
+
+        eLProperty = org.jdesktop.beansbinding.ELProperty.create("${resultList}");
+        jComboBoxBinding = org.jdesktop.swingbinding.SwingBindings.createJComboBoxBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, hematologyQuery, eLProperty, cmbTestName16);
+        bindingGroup.addBinding(jComboBoxBinding);
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, hematologyQuery, org.jdesktop.beansbinding.ELProperty.create("${firstResult}"), cmbTestName16, org.jdesktop.beansbinding.BeanProperty.create("selectedItem"));
+        bindingGroup.addBinding(binding);
 
         jLabel22.setText("16.");
 
         jLabel23.setText("17.");
 
+        eLProperty = org.jdesktop.beansbinding.ELProperty.create("${resultList}");
+        jComboBoxBinding = org.jdesktop.swingbinding.SwingBindings.createJComboBoxBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, hematologyQuery, eLProperty, cmbTestName17);
+        bindingGroup.addBinding(jComboBoxBinding);
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, hematologyQuery, org.jdesktop.beansbinding.ELProperty.create("${firstResult}"), cmbTestName17, org.jdesktop.beansbinding.BeanProperty.create("selectedItem"));
+        bindingGroup.addBinding(binding);
+
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, cmbTestName17, org.jdesktop.beansbinding.ELProperty.create("${selectedItem.results}"), txtResults17, org.jdesktop.beansbinding.BeanProperty.create("text"));
+        bindingGroup.addBinding(binding);
+
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, cmbTestName17, org.jdesktop.beansbinding.ELProperty.create("${selectedItem.normalValues}"), txtNormalValues17, org.jdesktop.beansbinding.BeanProperty.create("text"));
+        bindingGroup.addBinding(binding);
+
         jLabel24.setText("18.");
+
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, cmbTestName18, org.jdesktop.beansbinding.ELProperty.create("${selectedItem.results}"), txtResults18, org.jdesktop.beansbinding.BeanProperty.create("text"));
+        bindingGroup.addBinding(binding);
+
+        eLProperty = org.jdesktop.beansbinding.ELProperty.create("${resultList}");
+        jComboBoxBinding = org.jdesktop.swingbinding.SwingBindings.createJComboBoxBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, hematologyQuery, eLProperty, cmbTestName18);
+        bindingGroup.addBinding(jComboBoxBinding);
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, hematologyQuery, org.jdesktop.beansbinding.ELProperty.create("${firstResult}"), cmbTestName18, org.jdesktop.beansbinding.BeanProperty.create("selectedItem"));
+        bindingGroup.addBinding(binding);
+
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, cmbTestName18, org.jdesktop.beansbinding.ELProperty.create("${selectedItem.normalValues}"), txtNormalValues18, org.jdesktop.beansbinding.BeanProperty.create("text"));
+        bindingGroup.addBinding(binding);
 
         javax.swing.GroupLayout pnlHematologyTestLayout = new javax.swing.GroupLayout(pnlHematologyTest);
         pnlHematologyTest.setLayout(pnlHematologyTestLayout);
@@ -572,11 +820,18 @@ public class HematologyTestAllotmentFrame extends javax.swing.JInternalFrame {
                 .addContainerGap())
         );
 
+        bindingGroup.bind();
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void txtNormalValues2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNormalValues2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNormalValues2ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.persistence.EntityManager LaboratoryPUEntityManager;
     private javax.swing.JButton btnSave;
     private javax.swing.JComboBox cmbSearchByPatientName;
     private javax.swing.JComboBox cmbTestName1;
@@ -597,6 +852,10 @@ public class HematologyTestAllotmentFrame extends javax.swing.JInternalFrame {
     private javax.swing.JComboBox cmbTestName7;
     private javax.swing.JComboBox cmbTestName8;
     private javax.swing.JComboBox cmbTestName9;
+    private java.util.List<in.laboratory.gui.Hematology> hematologyList;
+    private java.util.List<in.laboratory.gui.Hematology> hematologyList1;
+    private javax.persistence.Query hematologyQuery;
+    private javax.persistence.Query hematologyQuery1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
@@ -621,6 +880,8 @@ public class HematologyTestAllotmentFrame extends javax.swing.JInternalFrame {
     private javax.swing.JLabel lblPatientName;
     private javax.swing.JLabel lblReferencedBy;
     private javax.swing.JLabel lblSearchByPatientName;
+    private java.util.List<in.laboratory.gui.Patient> patientList;
+    private javax.persistence.Query patientQuery;
     private javax.swing.JPanel pnlButtons;
     private javax.swing.JPanel pnlHematologyTest;
     private javax.swing.JPanel pnlPatientDetails;
@@ -665,5 +926,6 @@ public class HematologyTestAllotmentFrame extends javax.swing.JInternalFrame {
     private javax.swing.JTextField txtResults7;
     private javax.swing.JTextField txtResults8;
     private javax.swing.JTextField txtResults9;
+    private org.jdesktop.beansbinding.BindingGroup bindingGroup;
     // End of variables declaration//GEN-END:variables
 }

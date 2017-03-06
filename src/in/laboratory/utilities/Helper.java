@@ -7,14 +7,15 @@ package in.laboratory.utilities;
 
 //import in.laboratory.entity.User;
 import in.laboratory.entity.controller.BiochemistryJpaController;
-import in.laboratory.entity.controller.CompleteBloodCountJpaController;
+import in.laboratory.entity.controller.CompletebloodcountJpaController;
 import in.laboratory.entity.controller.HematologyJpaController;
 import in.laboratory.entity.controller.PatientJpaController;
 import in.laboratory.entity.controller.RoleJpaController;
 import in.laboratory.entity.controller.UrinalysisJpaController;
 //import in.laboratory.entity.controller.EyeSightJpaController;
 import in.laboratory.entity.controller.UserJpaController;
-import in.laboratory.entity.controller.WBCDifferentialCountJpaController;
+import in.laboratory.entity.controller.WbcdifferentialcountJpaController;
+import in.laboratory.entity.controller.WbcdifferentialcountJpaController;
 import java.awt.Component;
 import java.io.File;
 import java.io.IOException;
@@ -62,14 +63,14 @@ public class Helper {
         );
     }
     
-    public static CompleteBloodCountJpaController getCompleteBloodCountControllerInstance() {
-        return new CompleteBloodCountJpaController(
+    public static CompletebloodcountJpaController getCompleteBloodCountControllerInstance() {
+        return new CompletebloodcountJpaController(
             Persistence.createEntityManagerFactory("LaboratoryPU")
         );
     }
     
-    public static WBCDifferentialCountJpaController getWBCDifferentialCountControllerInstance() {
-        return new WBCDifferentialCountJpaController(
+    public static WbcdifferentialcountJpaController getWBCDifferentialCountControllerInstance() {
+        return new WbcdifferentialcountJpaController(
             Persistence.createEntityManagerFactory("LaboratoryPU")
         );
     }

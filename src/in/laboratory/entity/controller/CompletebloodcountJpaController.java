@@ -5,8 +5,8 @@
  */
 package in.laboratory.entity.controller;
 
-import in.laboratory.entity.CompleteBloodCount;
 import in.laboratory.entity.controller.exceptions.NonexistentEntityException;
+import in.laboratory.gui.Completebloodcount;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.EntityManager;
@@ -20,9 +20,9 @@ import javax.persistence.criteria.Root;
  *
  * @author sakshi
  */
-public class CompleteBloodCountJpaController implements Serializable {
+public class CompletebloodcountJpaController implements Serializable {
 
-    public CompleteBloodCountJpaController(EntityManagerFactory emf) {
+    public CompletebloodcountJpaController(EntityManagerFactory emf) {
         this.emf = emf;
     }
     private EntityManagerFactory emf = null;
@@ -31,12 +31,12 @@ public class CompleteBloodCountJpaController implements Serializable {
         return emf.createEntityManager();
     }
 
-    public void create(CompleteBloodCount completeBloodCount) {
+    public void create(Completebloodcount completebloodcount) {
         EntityManager em = null;
         try {
             em = getEntityManager();
             em.getTransaction().begin();
-            em.persist(completeBloodCount);
+            em.persist(completebloodcount);
             em.getTransaction().commit();
         } finally {
             if (em != null) {
@@ -45,19 +45,19 @@ public class CompleteBloodCountJpaController implements Serializable {
         }
     }
 
-    public void edit(CompleteBloodCount completeBloodCount) throws NonexistentEntityException, Exception {
+    public void edit(Completebloodcount completebloodcount) throws NonexistentEntityException, Exception {
         EntityManager em = null;
         try {
             em = getEntityManager();
             em.getTransaction().begin();
-            completeBloodCount = em.merge(completeBloodCount);
+            completebloodcount = em.merge(completebloodcount);
             em.getTransaction().commit();
         } catch (Exception ex) {
             String msg = ex.getLocalizedMessage();
             if (msg == null || msg.length() == 0) {
-                Long id = completeBloodCount.getId();
-                if (findCompleteBloodCount(id) == null) {
-                    throw new NonexistentEntityException("The completeBloodCount with id " + id + " no longer exists.");
+                Long id = completebloodcount.getId();
+                if (findCompletebloodcount(id) == null) {
+                    throw new NonexistentEntityException("The completebloodcount with id " + id + " no longer exists.");
                 }
             }
             throw ex;
@@ -73,14 +73,14 @@ public class CompleteBloodCountJpaController implements Serializable {
         try {
             em = getEntityManager();
             em.getTransaction().begin();
-            CompleteBloodCount completeBloodCount;
+            Completebloodcount completebloodcount;
             try {
-                completeBloodCount = em.getReference(CompleteBloodCount.class, id);
-                completeBloodCount.getId();
+                completebloodcount = em.getReference(Completebloodcount.class, id);
+                completebloodcount.getId();
             } catch (EntityNotFoundException enfe) {
-                throw new NonexistentEntityException("The completeBloodCount with id " + id + " no longer exists.", enfe);
+                throw new NonexistentEntityException("The completebloodcount with id " + id + " no longer exists.", enfe);
             }
-            em.remove(completeBloodCount);
+            em.remove(completebloodcount);
             em.getTransaction().commit();
         } finally {
             if (em != null) {
@@ -89,19 +89,19 @@ public class CompleteBloodCountJpaController implements Serializable {
         }
     }
 
-    public List<CompleteBloodCount> findCompleteBloodCountEntities() {
-        return findCompleteBloodCountEntities(true, -1, -1);
+    public List<Completebloodcount> findCompletebloodcountEntities() {
+        return findCompletebloodcountEntities(true, -1, -1);
     }
 
-    public List<CompleteBloodCount> findCompleteBloodCountEntities(int maxResults, int firstResult) {
-        return findCompleteBloodCountEntities(false, maxResults, firstResult);
+    public List<Completebloodcount> findCompletebloodcountEntities(int maxResults, int firstResult) {
+        return findCompletebloodcountEntities(false, maxResults, firstResult);
     }
 
-    private List<CompleteBloodCount> findCompleteBloodCountEntities(boolean all, int maxResults, int firstResult) {
+    private List<Completebloodcount> findCompletebloodcountEntities(boolean all, int maxResults, int firstResult) {
         EntityManager em = getEntityManager();
         try {
             CriteriaQuery cq = em.getCriteriaBuilder().createQuery();
-            cq.select(cq.from(CompleteBloodCount.class));
+            cq.select(cq.from(Completebloodcount.class));
             Query q = em.createQuery(cq);
             if (!all) {
                 q.setMaxResults(maxResults);
@@ -113,20 +113,20 @@ public class CompleteBloodCountJpaController implements Serializable {
         }
     }
 
-    public CompleteBloodCount findCompleteBloodCount(Long id) {
+    public Completebloodcount findCompletebloodcount(Long id) {
         EntityManager em = getEntityManager();
         try {
-            return em.find(CompleteBloodCount.class, id);
+            return em.find(Completebloodcount.class, id);
         } finally {
             em.close();
         }
     }
 
-    public int getCompleteBloodCountCount() {
+    public int getCompletebloodcountCount() {
         EntityManager em = getEntityManager();
         try {
             CriteriaQuery cq = em.getCriteriaBuilder().createQuery();
-            Root<CompleteBloodCount> rt = cq.from(CompleteBloodCount.class);
+            Root<Completebloodcount> rt = cq.from(Completebloodcount.class);
             cq.select(em.getCriteriaBuilder().count(rt));
             Query q = em.createQuery(cq);
             return ((Long) q.getSingleResult()).intValue();

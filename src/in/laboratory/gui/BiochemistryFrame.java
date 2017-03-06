@@ -225,20 +225,20 @@ public class BiochemistryFrame extends javax.swing.JInternalFrame {
 
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
         // TODO add your handling code here:
-        if(txtTestName.getText().isEmpty()) {
-            Helper.showErrorMessage(this, "Test Name field can not be empty");
-            txtTestName.requestFocus();
-        }
-
-        if(txtResults.getText().isEmpty()) {
-            Helper.showErrorMessage(this, "Result field can not be empty");
-            txtResults.requestFocus();
-        }
-
-        if(txtNormalValues.getText().isEmpty()) {
-            Helper.showErrorMessage(this, "Normal Range field can not be empty");
-            txtNormalValues.requestFocus();
-        }
+//        if(txtTestName.getText().isEmpty()) {
+//            Helper.showErrorMessage(this, "Test Name field can not be empty");
+//            txtTestName.requestFocus();
+//        }
+//
+//        if(txtResults.getText().isEmpty()) {
+//            Helper.showErrorMessage(this, "Result field can not be empty");
+//            txtResults.requestFocus();
+//        }
+//
+//        if(txtNormalValues.getText().isEmpty()) {
+//            Helper.showErrorMessage(this, "Normal Range field can not be empty");
+//            txtNormalValues.requestFocus();
+//        }
 
         in.laboratory.entity.Biochemistry biochemistry =
         new in.laboratory.entity.Biochemistry();
@@ -248,6 +248,7 @@ public class BiochemistryFrame extends javax.swing.JInternalFrame {
         biochemistry.setNormalValues(txtNormalValues.getText().trim());
 
         biochemistrycontroller.create(biochemistry);
+        updateUI();
         Helper.showSuccessMessage(this, "Biochemistry Test entries added successfully");
         txtTestName.setText("");
         txtResults.setText("");
@@ -268,6 +269,7 @@ public class BiochemistryFrame extends javax.swing.JInternalFrame {
         } catch(Exception ex) {
             Logger.getLogger(PatientFrame.class.getName()).log(Level.SEVERE, null, ex);
         }
+        updateUI();
         Helper.showSuccessMessage(this, "Biochemistry Test entries updated successfully");
         txtTestName.setText("");
         txtResults.setText("");
@@ -276,6 +278,7 @@ public class BiochemistryFrame extends javax.swing.JInternalFrame {
 
     private void btnRefreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRefreshActionPerformed
         // TODO add your handling code here:
+        updateUI();
         txtTestName.setText("");
         txtResults.setText("");
         txtNormalValues.setText("");

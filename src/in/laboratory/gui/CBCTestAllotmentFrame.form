@@ -1,6 +1,49 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
-<Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JInternalFrameFormInfo">
+<Form version="1.5" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JInternalFrameFormInfo">
+  <NonVisualComponents>
+    <Component class="javax.persistence.EntityManager" name="LaboratoryPUEntityManager">
+      <Properties>
+        <Property name="persistenceUnit" type="java.lang.String" value="LaboratoryPU"/>
+      </Properties>
+    </Component>
+    <Component class="javax.persistence.Query" name="patientQuery">
+      <Properties>
+        <Property name="query" type="java.lang.String" value="SELECT p FROM Patient p"/>
+        <Property name="entityManager" type="java.lang.Object" editor="org.netbeans.modules.form.j2ee.J2EEPropertyModifier$EMProperty$EntityManagerEditor">
+          <ComponentRef name="LaboratoryPUEntityManager"/>
+        </Property>
+      </Properties>
+    </Component>
+    <Component class="java.util.List" name="patientList">
+      <Properties>
+        <Property name="query" type="java.lang.Object" editor="org.netbeans.modules.form.j2ee.J2EEPropertyModifier$QueryBeanProperty$QueryEditor">
+          <ComponentRef name="patientQuery"/>
+        </Property>
+      </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;in.laboratory.gui.Patient&gt;"/>
+      </AuxValues>
+    </Component>
+    <Component class="javax.persistence.Query" name="completebloodcountQuery">
+      <Properties>
+        <Property name="query" type="java.lang.String" value="SELECT c FROM Completebloodcount c"/>
+        <Property name="entityManager" type="java.lang.Object" editor="org.netbeans.modules.form.j2ee.J2EEPropertyModifier$EMProperty$EntityManagerEditor">
+          <ComponentRef name="LaboratoryPUEntityManager"/>
+        </Property>
+      </Properties>
+    </Component>
+    <Component class="java.util.List" name="completebloodcountList">
+      <Properties>
+        <Property name="query" type="java.lang.Object" editor="org.netbeans.modules.form.j2ee.J2EEPropertyModifier$QueryBeanProperty$QueryEditor">
+          <ComponentRef name="completebloodcountQuery"/>
+        </Property>
+      </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;in.laboratory.gui.Completebloodcount&gt;"/>
+      </AuxValues>
+    </Component>
+  </NonVisualComponents>
   <Properties>
     <Property name="closable" type="boolean" value="true"/>
     <Property name="title" type="java.lang.String" value="Complete Blood Count Test Allotment"/>
@@ -165,6 +208,10 @@
               </StringArray>
             </Property>
           </Properties>
+          <BindingProperties>
+            <BindingProperty name="elements" source="patientQuery" sourcePath="${resultList}" target="cmbSearchByPatientName" targetPath="elements" updateStrategy="0" immediately="false"/>
+            <BindingProperty name="selectedItem" source="patientQuery" sourcePath="${firstResult}" target="cmbSearchByPatientName" targetPath="selectedItem" updateStrategy="0" immediately="false"/>
+          </BindingProperties>
         </Component>
         <Component class="javax.swing.JLabel" name="lblPatientName">
           <Properties>
@@ -175,6 +222,11 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtPatientName">
+          <BindingProperties>
+            <BindingProperty name="text" source="cmbSearchByPatientName" sourcePath="${selectedItem.firstName} ${selectedItem.lastName}" target="txtPatientName" targetPath="text" updateStrategy="0" immediately="false">
+              <BindingParameter name="javax.swing.binding.ParameterKeys.TEXT_CHANGE_STRATEGY" value="javax.swing.binding.TextChangeStrategy.ON_TYPE"/>
+            </BindingProperty>
+          </BindingProperties>
         </Component>
         <Component class="javax.swing.JLabel" name="lblAge">
           <Properties>
@@ -185,6 +237,11 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtAge">
+          <BindingProperties>
+            <BindingProperty name="text" source="cmbSearchByPatientName" sourcePath="${selectedItem.age}" target="txtAge" targetPath="text" updateStrategy="0" immediately="false">
+              <BindingParameter name="javax.swing.binding.ParameterKeys.TEXT_CHANGE_STRATEGY" value="javax.swing.binding.TextChangeStrategy.ON_TYPE"/>
+            </BindingProperty>
+          </BindingProperties>
         </Component>
         <Component class="javax.swing.JLabel" name="lblGender">
           <Properties>
@@ -195,6 +252,11 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtGender">
+          <BindingProperties>
+            <BindingProperty name="text" source="cmbSearchByPatientName" sourcePath="${selectedItem.gender}" target="txtGender" targetPath="text" updateStrategy="0" immediately="false">
+              <BindingParameter name="javax.swing.binding.ParameterKeys.TEXT_CHANGE_STRATEGY" value="javax.swing.binding.TextChangeStrategy.ON_TYPE"/>
+            </BindingProperty>
+          </BindingProperties>
         </Component>
         <Component class="javax.swing.JLabel" name="lblReferencedBy">
           <Properties>
@@ -205,6 +267,11 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtReferencedBy">
+          <BindingProperties>
+            <BindingProperty name="text" source="cmbSearchByPatientName" sourcePath="${selectedItem.referencedBy}" target="txtReferencedBy" targetPath="text" updateStrategy="0" immediately="false">
+              <BindingParameter name="javax.swing.binding.ParameterKeys.TEXT_CHANGE_STRATEGY" value="javax.swing.binding.TextChangeStrategy.ON_TYPE"/>
+            </BindingProperty>
+          </BindingProperties>
         </Component>
         <Component class="javax.swing.JLabel" name="lblDate">
           <Properties>
@@ -577,10 +644,24 @@
               <StringArray count="0"/>
             </Property>
           </Properties>
+          <BindingProperties>
+            <BindingProperty name="elements" source="completebloodcountQuery" sourcePath="${resultList}" target="cmbTestName1" targetPath="elements" updateStrategy="0" immediately="false"/>
+            <BindingProperty name="selectedItem" source="completebloodcountQuery" sourcePath="${firstResult}" target="cmbTestName1" targetPath="selectedItem" updateStrategy="0" immediately="false"/>
+          </BindingProperties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtResults1">
+          <BindingProperties>
+            <BindingProperty name="text" source="cmbTestName1" sourcePath="${selectedItem.results}" target="txtResults1" targetPath="text" updateStrategy="0" immediately="false">
+              <BindingParameter name="javax.swing.binding.ParameterKeys.TEXT_CHANGE_STRATEGY" value="javax.swing.binding.TextChangeStrategy.ON_TYPE"/>
+            </BindingProperty>
+          </BindingProperties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtNormalValues1">
+          <BindingProperties>
+            <BindingProperty name="text" source="cmbTestName1" sourcePath="${selectedItem.normalvalues}" target="txtNormalValues1" targetPath="text" updateStrategy="0" immediately="false">
+              <BindingParameter name="javax.swing.binding.ParameterKeys.TEXT_CHANGE_STRATEGY" value="javax.swing.binding.TextChangeStrategy.ON_TYPE"/>
+            </BindingProperty>
+          </BindingProperties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel8">
           <Properties>
@@ -593,10 +674,24 @@
               <StringArray count="0"/>
             </Property>
           </Properties>
+          <BindingProperties>
+            <BindingProperty name="elements" source="completebloodcountQuery" sourcePath="${resultList}" target="cmbTestName2" targetPath="elements" updateStrategy="0" immediately="false"/>
+            <BindingProperty name="selectedItem" source="completebloodcountQuery" sourcePath="${firstResult}" target="cmbTestName2" targetPath="selectedItem" updateStrategy="0" immediately="false"/>
+          </BindingProperties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtResults2">
+          <BindingProperties>
+            <BindingProperty name="text" source="cmbTestName2" sourcePath="${selectedItem.results}" target="txtResults2" targetPath="text" updateStrategy="0" immediately="false">
+              <BindingParameter name="javax.swing.binding.ParameterKeys.TEXT_CHANGE_STRATEGY" value="javax.swing.binding.TextChangeStrategy.ON_TYPE"/>
+            </BindingProperty>
+          </BindingProperties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtNormalValues2">
+          <BindingProperties>
+            <BindingProperty name="text" source="cmbTestName2" sourcePath="${selectedItem.normalvalues}" target="txtNormalValues2" targetPath="text" updateStrategy="0" immediately="false">
+              <BindingParameter name="javax.swing.binding.ParameterKeys.TEXT_CHANGE_STRATEGY" value="javax.swing.binding.TextChangeStrategy.ON_TYPE"/>
+            </BindingProperty>
+          </BindingProperties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel9">
           <Properties>
@@ -604,8 +699,18 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtResults3">
+          <BindingProperties>
+            <BindingProperty name="text" source="cmbTestName3" sourcePath="${selectedItem.results}" target="txtResults3" targetPath="text" updateStrategy="0" immediately="false">
+              <BindingParameter name="javax.swing.binding.ParameterKeys.TEXT_CHANGE_STRATEGY" value="javax.swing.binding.TextChangeStrategy.ON_TYPE"/>
+            </BindingProperty>
+          </BindingProperties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtNormalValues3">
+          <BindingProperties>
+            <BindingProperty name="text" source="cmbTestName3" sourcePath="${selectedItem.normalvalues}" target="txtNormalValues3" targetPath="text" updateStrategy="0" immediately="false">
+              <BindingParameter name="javax.swing.binding.ParameterKeys.TEXT_CHANGE_STRATEGY" value="javax.swing.binding.TextChangeStrategy.ON_TYPE"/>
+            </BindingProperty>
+          </BindingProperties>
         </Component>
         <Component class="javax.swing.JComboBox" name="cmbTestName3">
           <Properties>
@@ -613,6 +718,10 @@
               <StringArray count="0"/>
             </Property>
           </Properties>
+          <BindingProperties>
+            <BindingProperty name="elements" source="completebloodcountQuery" sourcePath="${resultList}" target="cmbTestName3" targetPath="elements" updateStrategy="0" immediately="false"/>
+            <BindingProperty name="selectedItem" source="completebloodcountQuery" sourcePath="${firstResult}" target="cmbTestName3" targetPath="selectedItem" updateStrategy="0" immediately="false"/>
+          </BindingProperties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel10">
           <Properties>
@@ -625,10 +734,24 @@
               <StringArray count="0"/>
             </Property>
           </Properties>
+          <BindingProperties>
+            <BindingProperty name="elements" source="completebloodcountQuery" sourcePath="${resultList}" target="cmbTestName4" targetPath="elements" updateStrategy="0" immediately="false"/>
+            <BindingProperty name="selectedItem" source="completebloodcountQuery" sourcePath="${firstResult}" target="cmbTestName4" targetPath="selectedItem" updateStrategy="0" immediately="false"/>
+          </BindingProperties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtResults4">
+          <BindingProperties>
+            <BindingProperty name="text" source="cmbTestName4" sourcePath="${selectedItem.results}" target="txtResults4" targetPath="text" updateStrategy="0" immediately="false">
+              <BindingParameter name="javax.swing.binding.ParameterKeys.TEXT_CHANGE_STRATEGY" value="javax.swing.binding.TextChangeStrategy.ON_TYPE"/>
+            </BindingProperty>
+          </BindingProperties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtNormalValues4">
+          <BindingProperties>
+            <BindingProperty name="text" source="cmbTestName4" sourcePath="${selectedItem.normalvalues}" target="txtNormalValues4" targetPath="text" updateStrategy="0" immediately="false">
+              <BindingParameter name="javax.swing.binding.ParameterKeys.TEXT_CHANGE_STRATEGY" value="javax.swing.binding.TextChangeStrategy.ON_TYPE"/>
+            </BindingProperty>
+          </BindingProperties>
         </Component>
         <Component class="javax.swing.JComboBox" name="cmbTestName5">
           <Properties>
@@ -636,8 +759,17 @@
               <StringArray count="0"/>
             </Property>
           </Properties>
+          <BindingProperties>
+            <BindingProperty name="elements" source="completebloodcountQuery" sourcePath="${resultList}" target="cmbTestName5" targetPath="elements" updateStrategy="0" immediately="false"/>
+            <BindingProperty name="selectedItem" source="completebloodcountQuery" sourcePath="${firstResult}" target="cmbTestName5" targetPath="selectedItem" updateStrategy="0" immediately="false"/>
+          </BindingProperties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtResults5">
+          <BindingProperties>
+            <BindingProperty name="text" source="cmbTestName5" sourcePath="${selectedItem.results}" target="txtResults5" targetPath="text" updateStrategy="0" immediately="false">
+              <BindingParameter name="javax.swing.binding.ParameterKeys.TEXT_CHANGE_STRATEGY" value="javax.swing.binding.TextChangeStrategy.ON_TYPE"/>
+            </BindingProperty>
+          </BindingProperties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel11">
           <Properties>
@@ -645,8 +777,18 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtNormalValues5">
+          <BindingProperties>
+            <BindingProperty name="text" source="cmbTestName5" sourcePath="${selectedItem.normalvalues}" target="txtNormalValues5" targetPath="text" updateStrategy="0" immediately="false">
+              <BindingParameter name="javax.swing.binding.ParameterKeys.TEXT_CHANGE_STRATEGY" value="javax.swing.binding.TextChangeStrategy.ON_TYPE"/>
+            </BindingProperty>
+          </BindingProperties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtResults6">
+          <BindingProperties>
+            <BindingProperty name="text" source="cmbTestName6" sourcePath="${selectedItem.results}" target="txtResults6" targetPath="text" updateStrategy="0" immediately="false">
+              <BindingParameter name="javax.swing.binding.ParameterKeys.TEXT_CHANGE_STRATEGY" value="javax.swing.binding.TextChangeStrategy.ON_TYPE"/>
+            </BindingProperty>
+          </BindingProperties>
         </Component>
         <Component class="javax.swing.JComboBox" name="cmbTestName6">
           <Properties>
@@ -654,8 +796,17 @@
               <StringArray count="0"/>
             </Property>
           </Properties>
+          <BindingProperties>
+            <BindingProperty name="elements" source="completebloodcountQuery" sourcePath="${resultList}" target="cmbTestName6" targetPath="elements" updateStrategy="0" immediately="false"/>
+            <BindingProperty name="selectedItem" source="completebloodcountQuery" sourcePath="${firstResult}" target="cmbTestName6" targetPath="selectedItem" updateStrategy="0" immediately="false"/>
+          </BindingProperties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtNormalValues6">
+          <BindingProperties>
+            <BindingProperty name="text" source="cmbTestName6" sourcePath="${selectedItem.normalvalues}" target="txtNormalValues6" targetPath="text" updateStrategy="0" immediately="false">
+              <BindingParameter name="javax.swing.binding.ParameterKeys.TEXT_CHANGE_STRATEGY" value="javax.swing.binding.TextChangeStrategy.ON_TYPE"/>
+            </BindingProperty>
+          </BindingProperties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel12">
           <Properties>
@@ -673,14 +824,38 @@
               <StringArray count="0"/>
             </Property>
           </Properties>
+          <BindingProperties>
+            <BindingProperty name="elements" source="completebloodcountQuery" sourcePath="${resultList}" target="cmbTestName7" targetPath="elements" updateStrategy="0" immediately="false"/>
+            <BindingProperty name="selectedItem" source="completebloodcountQuery" sourcePath="${firstResult}" target="cmbTestName7" targetPath="selectedItem" updateStrategy="0" immediately="false"/>
+          </BindingProperties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtResults7">
+          <BindingProperties>
+            <BindingProperty name="text" source="cmbTestName7" sourcePath="${selectedItem.results}" target="txtResults7" targetPath="text" updateStrategy="0" immediately="false">
+              <BindingParameter name="javax.swing.binding.ParameterKeys.TEXT_CHANGE_STRATEGY" value="javax.swing.binding.TextChangeStrategy.ON_TYPE"/>
+            </BindingProperty>
+          </BindingProperties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtNormalValues7">
+          <BindingProperties>
+            <BindingProperty name="text" source="cmbTestName7" sourcePath="${selectedItem.normalvalues}" target="txtNormalValues7" targetPath="text" updateStrategy="0" immediately="false">
+              <BindingParameter name="javax.swing.binding.ParameterKeys.TEXT_CHANGE_STRATEGY" value="javax.swing.binding.TextChangeStrategy.ON_TYPE"/>
+            </BindingProperty>
+          </BindingProperties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtNormalValues8">
+          <BindingProperties>
+            <BindingProperty name="text" source="cmbTestName8" sourcePath="${selectedItem.normalvalues}" target="txtNormalValues8" targetPath="text" updateStrategy="0" immediately="false">
+              <BindingParameter name="javax.swing.binding.ParameterKeys.TEXT_CHANGE_STRATEGY" value="javax.swing.binding.TextChangeStrategy.ON_TYPE"/>
+            </BindingProperty>
+          </BindingProperties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtResults8">
+          <BindingProperties>
+            <BindingProperty name="text" source="cmbTestName8" sourcePath="${selectedItem.results}" target="txtResults8" targetPath="text" updateStrategy="0" immediately="false">
+              <BindingParameter name="javax.swing.binding.ParameterKeys.TEXT_CHANGE_STRATEGY" value="javax.swing.binding.TextChangeStrategy.ON_TYPE"/>
+            </BindingProperty>
+          </BindingProperties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel14">
           <Properties>
@@ -693,6 +868,10 @@
               <StringArray count="0"/>
             </Property>
           </Properties>
+          <BindingProperties>
+            <BindingProperty name="elements" source="completebloodcountQuery" sourcePath="${resultList}" target="cmbTestName8" targetPath="elements" updateStrategy="0" immediately="false"/>
+            <BindingProperty name="selectedItem" source="completebloodcountQuery" sourcePath="${firstResult}" target="cmbTestName8" targetPath="selectedItem" updateStrategy="0" immediately="false"/>
+          </BindingProperties>
         </Component>
         <Component class="javax.swing.JComboBox" name="cmbTestName9">
           <Properties>
@@ -700,10 +879,24 @@
               <StringArray count="0"/>
             </Property>
           </Properties>
+          <BindingProperties>
+            <BindingProperty name="elements" source="completebloodcountQuery" sourcePath="${resultList}" target="cmbTestName9" targetPath="elements" updateStrategy="0" immediately="false"/>
+            <BindingProperty name="selectedItem" source="completebloodcountQuery" sourcePath="${firstResult}" target="cmbTestName9" targetPath="selectedItem" updateStrategy="0" immediately="false"/>
+          </BindingProperties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtResults9">
+          <BindingProperties>
+            <BindingProperty name="text" source="cmbTestName9" sourcePath="${selectedItem.results}" target="txtResults9" targetPath="text" updateStrategy="0" immediately="false">
+              <BindingParameter name="javax.swing.binding.ParameterKeys.TEXT_CHANGE_STRATEGY" value="javax.swing.binding.TextChangeStrategy.ON_TYPE"/>
+            </BindingProperty>
+          </BindingProperties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtNormalValues9">
+          <BindingProperties>
+            <BindingProperty name="text" source="cmbTestName9" sourcePath="${selectedItem.normalvalues}" target="txtNormalValues9" targetPath="text" updateStrategy="0" immediately="false">
+              <BindingParameter name="javax.swing.binding.ParameterKeys.TEXT_CHANGE_STRATEGY" value="javax.swing.binding.TextChangeStrategy.ON_TYPE"/>
+            </BindingProperty>
+          </BindingProperties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel15">
           <Properties>
@@ -721,10 +914,24 @@
               <StringArray count="0"/>
             </Property>
           </Properties>
+          <BindingProperties>
+            <BindingProperty name="elements" source="completebloodcountQuery" sourcePath="${resultList}" target="cmbTestName10" targetPath="elements" updateStrategy="0" immediately="false"/>
+            <BindingProperty name="selectedItem" source="completebloodcountQuery" sourcePath="${firstResult}" target="cmbTestName10" targetPath="selectedItem" updateStrategy="0" immediately="false"/>
+          </BindingProperties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtResults10">
+          <BindingProperties>
+            <BindingProperty name="text" source="cmbTestName10" sourcePath="${selectedItem.results}" target="txtResults10" targetPath="text" updateStrategy="0" immediately="false">
+              <BindingParameter name="javax.swing.binding.ParameterKeys.TEXT_CHANGE_STRATEGY" value="javax.swing.binding.TextChangeStrategy.ON_TYPE"/>
+            </BindingProperty>
+          </BindingProperties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtNormalValues10">
+          <BindingProperties>
+            <BindingProperty name="text" source="cmbTestName10" sourcePath="${selectedItem.normalvalues}" target="txtNormalValues10" targetPath="text" updateStrategy="0" immediately="false">
+              <BindingParameter name="javax.swing.binding.ParameterKeys.TEXT_CHANGE_STRATEGY" value="javax.swing.binding.TextChangeStrategy.ON_TYPE"/>
+            </BindingProperty>
+          </BindingProperties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel17">
           <Properties>
@@ -737,12 +944,31 @@
               <StringArray count="0"/>
             </Property>
           </Properties>
+          <BindingProperties>
+            <BindingProperty name="elements" source="completebloodcountQuery" sourcePath="${resultList}" target="cmbTestName11" targetPath="elements" updateStrategy="0" immediately="false"/>
+            <BindingProperty name="selectedItem" source="completebloodcountQuery" sourcePath="${firstResult}" target="cmbTestName11" targetPath="selectedItem" updateStrategy="0" immediately="false"/>
+          </BindingProperties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtResults11">
+          <BindingProperties>
+            <BindingProperty name="text" source="cmbTestName11" sourcePath="${selectedItem.results}" target="txtResults11" targetPath="text" updateStrategy="0" immediately="false">
+              <BindingParameter name="javax.swing.binding.ParameterKeys.TEXT_CHANGE_STRATEGY" value="javax.swing.binding.TextChangeStrategy.ON_TYPE"/>
+            </BindingProperty>
+          </BindingProperties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtNormalValues11">
+          <BindingProperties>
+            <BindingProperty name="text" source="cmbTestName11" sourcePath="${selectedItem.normalvalues}" target="txtNormalValues11" targetPath="text" updateStrategy="0" immediately="false">
+              <BindingParameter name="javax.swing.binding.ParameterKeys.TEXT_CHANGE_STRATEGY" value="javax.swing.binding.TextChangeStrategy.ON_TYPE"/>
+            </BindingProperty>
+          </BindingProperties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtResults12">
+          <BindingProperties>
+            <BindingProperty name="text" source="cmbTestName12" sourcePath="${selectedItem.results}" target="txtResults12" targetPath="text" updateStrategy="0" immediately="false">
+              <BindingParameter name="javax.swing.binding.ParameterKeys.TEXT_CHANGE_STRATEGY" value="javax.swing.binding.TextChangeStrategy.ON_TYPE"/>
+            </BindingProperty>
+          </BindingProperties>
         </Component>
         <Component class="javax.swing.JComboBox" name="cmbTestName12">
           <Properties>
@@ -750,8 +976,17 @@
               <StringArray count="0"/>
             </Property>
           </Properties>
+          <BindingProperties>
+            <BindingProperty name="elements" source="completebloodcountQuery" sourcePath="${resultList}" target="cmbTestName12" targetPath="elements" updateStrategy="0" immediately="false"/>
+            <BindingProperty name="selectedItem" source="completebloodcountQuery" sourcePath="${firstResult}" target="cmbTestName12" targetPath="selectedItem" updateStrategy="0" immediately="false"/>
+          </BindingProperties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtNormalValues12">
+          <BindingProperties>
+            <BindingProperty name="text" source="cmbTestName12" sourcePath="${selectedItem.normalvalues}" target="txtNormalValues12" targetPath="text" updateStrategy="0" immediately="false">
+              <BindingParameter name="javax.swing.binding.ParameterKeys.TEXT_CHANGE_STRATEGY" value="javax.swing.binding.TextChangeStrategy.ON_TYPE"/>
+            </BindingProperty>
+          </BindingProperties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel18">
           <Properties>
@@ -759,8 +994,18 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtResults13">
+          <BindingProperties>
+            <BindingProperty name="text" source="cmbTestName13" sourcePath="${selectedItem.results}" target="txtResults13" targetPath="text" updateStrategy="0" immediately="false">
+              <BindingParameter name="javax.swing.binding.ParameterKeys.TEXT_CHANGE_STRATEGY" value="javax.swing.binding.TextChangeStrategy.ON_TYPE"/>
+            </BindingProperty>
+          </BindingProperties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtNormalValues13">
+          <BindingProperties>
+            <BindingProperty name="text" source="cmbTestName13" sourcePath="${selectedItem.normalvalues}" target="txtNormalValues13" targetPath="text" updateStrategy="0" immediately="false">
+              <BindingParameter name="javax.swing.binding.ParameterKeys.TEXT_CHANGE_STRATEGY" value="javax.swing.binding.TextChangeStrategy.ON_TYPE"/>
+            </BindingProperty>
+          </BindingProperties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel19">
           <Properties>
@@ -773,10 +1018,24 @@
               <StringArray count="0"/>
             </Property>
           </Properties>
+          <BindingProperties>
+            <BindingProperty name="elements" source="completebloodcountQuery" sourcePath="${resultList}" target="cmbTestName13" targetPath="elements" updateStrategy="0" immediately="false"/>
+            <BindingProperty name="selectedItem" source="completebloodcountQuery" sourcePath="${firstResult}" target="cmbTestName13" targetPath="selectedItem" updateStrategy="0" immediately="false"/>
+          </BindingProperties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtResults14">
+          <BindingProperties>
+            <BindingProperty name="text" source="cmbTestName14" sourcePath="${selectedItem.results}" target="txtResults14" targetPath="text" updateStrategy="0" immediately="false">
+              <BindingParameter name="javax.swing.binding.ParameterKeys.TEXT_CHANGE_STRATEGY" value="javax.swing.binding.TextChangeStrategy.ON_TYPE"/>
+            </BindingProperty>
+          </BindingProperties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtNormalValues14">
+          <BindingProperties>
+            <BindingProperty name="text" source="cmbTestName14" sourcePath="${selectedItem.normalvalues}" target="txtNormalValues14" targetPath="text" updateStrategy="0" immediately="false">
+              <BindingParameter name="javax.swing.binding.ParameterKeys.TEXT_CHANGE_STRATEGY" value="javax.swing.binding.TextChangeStrategy.ON_TYPE"/>
+            </BindingProperty>
+          </BindingProperties>
         </Component>
         <Component class="javax.swing.JComboBox" name="cmbTestName14">
           <Properties>
@@ -784,6 +1043,10 @@
               <StringArray count="0"/>
             </Property>
           </Properties>
+          <BindingProperties>
+            <BindingProperty name="elements" source="completebloodcountQuery" sourcePath="${resultList}" target="cmbTestName14" targetPath="elements" updateStrategy="0" immediately="false"/>
+            <BindingProperty name="selectedItem" source="completebloodcountQuery" sourcePath="${firstResult}" target="cmbTestName14" targetPath="selectedItem" updateStrategy="0" immediately="false"/>
+          </BindingProperties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel20">
           <Properties>
@@ -791,8 +1054,18 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtNormalValues15">
+          <BindingProperties>
+            <BindingProperty name="text" source="cmbTestName15" sourcePath="${selectedItem.normalvalues}" target="txtNormalValues15" targetPath="text" updateStrategy="0" immediately="false">
+              <BindingParameter name="javax.swing.binding.ParameterKeys.TEXT_CHANGE_STRATEGY" value="javax.swing.binding.TextChangeStrategy.ON_TYPE"/>
+            </BindingProperty>
+          </BindingProperties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtResults15">
+          <BindingProperties>
+            <BindingProperty name="text" source="cmbTestName15" sourcePath="${selectedItem.results}" target="txtResults15" targetPath="text" updateStrategy="0" immediately="false">
+              <BindingParameter name="javax.swing.binding.ParameterKeys.TEXT_CHANGE_STRATEGY" value="javax.swing.binding.TextChangeStrategy.ON_TYPE"/>
+            </BindingProperty>
+          </BindingProperties>
         </Component>
         <Component class="javax.swing.JComboBox" name="cmbTestName15">
           <Properties>
@@ -800,6 +1073,10 @@
               <StringArray count="0"/>
             </Property>
           </Properties>
+          <BindingProperties>
+            <BindingProperty name="elements" source="completebloodcountQuery" sourcePath="${resultList}" target="cmbTestName15" targetPath="elements" updateStrategy="0" immediately="false"/>
+            <BindingProperty name="selectedItem" source="completebloodcountQuery" sourcePath="${firstResult}" target="cmbTestName15" targetPath="selectedItem" updateStrategy="0" immediately="false"/>
+          </BindingProperties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel21">
           <Properties>
@@ -807,8 +1084,18 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtNormalValues16">
+          <BindingProperties>
+            <BindingProperty name="text" source="cmbTestName16" sourcePath="${selectedItem.normalvalues}" target="txtNormalValues16" targetPath="text" updateStrategy="0" immediately="false">
+              <BindingParameter name="javax.swing.binding.ParameterKeys.TEXT_CHANGE_STRATEGY" value="javax.swing.binding.TextChangeStrategy.ON_TYPE"/>
+            </BindingProperty>
+          </BindingProperties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtResults16">
+          <BindingProperties>
+            <BindingProperty name="text" source="cmbTestName16" sourcePath="${selectedItem.results}" target="txtResults16" targetPath="text" updateStrategy="0" immediately="false">
+              <BindingParameter name="javax.swing.binding.ParameterKeys.TEXT_CHANGE_STRATEGY" value="javax.swing.binding.TextChangeStrategy.ON_TYPE"/>
+            </BindingProperty>
+          </BindingProperties>
         </Component>
         <Component class="javax.swing.JComboBox" name="cmbTestName16">
           <Properties>
@@ -816,6 +1103,10 @@
               <StringArray count="0"/>
             </Property>
           </Properties>
+          <BindingProperties>
+            <BindingProperty name="elements" source="completebloodcountQuery" sourcePath="${resultList}" target="cmbTestName16" targetPath="elements" updateStrategy="0" immediately="false"/>
+            <BindingProperty name="selectedItem" source="completebloodcountQuery" sourcePath="${firstResult}" target="cmbTestName16" targetPath="selectedItem" updateStrategy="0" immediately="false"/>
+          </BindingProperties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel22">
           <Properties>
@@ -833,10 +1124,24 @@
               <StringArray count="0"/>
             </Property>
           </Properties>
+          <BindingProperties>
+            <BindingProperty name="elements" source="completebloodcountQuery" sourcePath="${resultList}" target="cmbTestName17" targetPath="elements" updateStrategy="0" immediately="false"/>
+            <BindingProperty name="selectedItem" source="completebloodcountQuery" sourcePath="${firstResult}" target="cmbTestName17" targetPath="selectedItem" updateStrategy="0" immediately="false"/>
+          </BindingProperties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtResults17">
+          <BindingProperties>
+            <BindingProperty name="text" source="cmbTestName17" sourcePath="${selectedItem.results}" target="txtResults17" targetPath="text" updateStrategy="0" immediately="false">
+              <BindingParameter name="javax.swing.binding.ParameterKeys.TEXT_CHANGE_STRATEGY" value="javax.swing.binding.TextChangeStrategy.ON_TYPE"/>
+            </BindingProperty>
+          </BindingProperties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtNormalValues17">
+          <BindingProperties>
+            <BindingProperty name="text" source="cmbTestName17" sourcePath="${selectedItem.normalvalues}" target="txtNormalValues17" targetPath="text" updateStrategy="0" immediately="false">
+              <BindingParameter name="javax.swing.binding.ParameterKeys.TEXT_CHANGE_STRATEGY" value="javax.swing.binding.TextChangeStrategy.ON_TYPE"/>
+            </BindingProperty>
+          </BindingProperties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel24">
           <Properties>
@@ -844,6 +1149,11 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtResults18">
+          <BindingProperties>
+            <BindingProperty name="text" source="cmbTestName18" sourcePath="${selectedItem.results}" target="txtResults18" targetPath="text" updateStrategy="0" immediately="false">
+              <BindingParameter name="javax.swing.binding.ParameterKeys.TEXT_CHANGE_STRATEGY" value="javax.swing.binding.TextChangeStrategy.ON_TYPE"/>
+            </BindingProperty>
+          </BindingProperties>
         </Component>
         <Component class="javax.swing.JComboBox" name="cmbTestName18">
           <Properties>
@@ -851,8 +1161,17 @@
               <StringArray count="0"/>
             </Property>
           </Properties>
+          <BindingProperties>
+            <BindingProperty name="elements" source="completebloodcountQuery" sourcePath="${resultList}" target="cmbTestName18" targetPath="elements" updateStrategy="0" immediately="false"/>
+            <BindingProperty name="selectedItem" source="completebloodcountQuery" sourcePath="${firstResult}" target="cmbTestName18" targetPath="selectedItem" updateStrategy="0" immediately="false"/>
+          </BindingProperties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtNormalValues18">
+          <BindingProperties>
+            <BindingProperty name="text" source="cmbTestName18" sourcePath="${selectedItem.normalvalues}" target="txtNormalValues18" targetPath="text" updateStrategy="0" immediately="false">
+              <BindingParameter name="javax.swing.binding.ParameterKeys.TEXT_CHANGE_STRATEGY" value="javax.swing.binding.TextChangeStrategy.ON_TYPE"/>
+            </BindingProperty>
+          </BindingProperties>
         </Component>
       </SubComponents>
     </Container>

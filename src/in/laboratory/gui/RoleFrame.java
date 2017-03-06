@@ -194,6 +194,7 @@ public class RoleFrame extends javax.swing.JInternalFrame {
 
     private void btnRefreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRefreshActionPerformed
         // TODO add your handling code here:
+        updateUI();
         txtRoleName.setText("");
         //cmbRoleName.setSelectedIndex(0);
     }//GEN-LAST:event_btnRefreshActionPerformed
@@ -212,7 +213,7 @@ public class RoleFrame extends javax.swing.JInternalFrame {
         
         role.setName(txtRoleName.getText().trim());
         roleController.create(role);
-        
+        updateUI();
         Helper.showSuccessMessage(this, "Role Created Successfully");
        // btnUpdate.setEnabled(true);
         txtRoleName.setText("");
@@ -234,7 +235,7 @@ public class RoleFrame extends javax.swing.JInternalFrame {
         } catch (Exception ex) {
             Logger.getLogger(PatientFrame.class.getName()).log(Level.SEVERE, null, ex);
         }
-
+         updateUI();
         Helper.showSuccessMessage(this, "Role Updated Successfully!");
        // btnSave.setEnabled(true);
         txtRoleName.setText("");

@@ -3,14 +3,20 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/F:/swingprogram/Laboratory/src/in/laboratory/gui/BiochemistryReport.java</file>
             <file>file:/F:/swingprogram/Laboratory/src/in/laboratory/gui/UpdateUser.java</file>
             <file>file:/F:/swingprogram/Laboratory/src/in/laboratory/gui/CompleteBloodCountFrame.java</file>
             <file>file:/F:/swingprogram/Laboratory/src/in/laboratory/gui/Login.java</file>
             <file>file:/F:/swingprogram/Laboratory/src/in/laboratory/gui/RegisterFrame.java</file>
             <file>file:/F:/swingprogram/Laboratory/src/in/laboratory/gui/RoleFrame.java</file>
+            <file>file:/F:/swingprogram/Laboratory/src/in/laboratory/gui/UrinalysisTestAllotmentFrame.java</file>
+            <file>file:/F:/swingprogram/Laboratory/src/in/laboratory/gui/CBCTestAllotmentFrame.java</file>
             <file>file:/F:/swingprogram/Laboratory/src/in/laboratory/entity/controller/RoleJpaController.java</file>
-            <file>file:/F:/swingprogram/Laboratory/src/in/laboratory/entity/CompleteBloodCount.java</file>
+            <file>file:/F:/swingprogram/Laboratory/src/in/laboratory/gui/HematologyTestAllotmentFrame.java</file>
+            <file>file:/F:/swingprogram/Laboratory/src/in/laboratory/gui/BiochemistryTestAllotmentFrame.java</file>
+            <file>file:/F:/swingprogram/Laboratory/src/in/laboratory/gui/Completebloodcount.java</file>
             <file>file:/F:/swingprogram/Laboratory/src/in/laboratory/entity/controller/UserJpaController.java</file>
+            <file>file:/F:/swingprogram/Laboratory/src/in/laboratory/entity/CompleteBloodCount.java</file>
             <file>file:/F:/swingprogram/Laboratory/src/in/laboratory/utilities/DateConverter.java</file>
             <file>file:/F:/swingprogram/Laboratory/src/in/laboratory/gui/Patient.java</file>
             <file>file:/F:/swingprogram/Laboratory/src/in/laboratory/gui/UrinalysisFrame.java</file>
@@ -20,16 +26,23 @@
             <file>file:/F:/swingprogram/Laboratory/src/in/laboratory/gui/HematologyReport.java</file>
             <file>file:/F:/swingprogram/Laboratory/src/in/laboratory/entity/WBCDifferentialCount.java</file>
             <file>file:/F:/swingprogram/Laboratory/src/in/laboratory/gui/HematologyFrame.java</file>
+            <file>file:/F:/swingprogram/Laboratory/src/in/laboratory/gui/temporary.java</file>
             <file>file:/F:/swingprogram/Laboratory/src/in/laboratory/utilities/Helper.java</file>
             <file>file:/F:/swingprogram/Laboratory/src/in/laboratory/utilities/RowSorterConverter.java</file>
             <file>file:/F:/swingprogram/Laboratory/src/in/laboratory/gui/Menu.java</file>
+            <file>file:/F:/swingprogram/Laboratory/src/in/laboratory/gui/WBCDifferentialCountReport.java</file>
+            <file>file:/F:/swingprogram/Laboratory/src/in/laboratory/gui/WBCDifferentialCountTestAllotmentFrame.java</file>
+            <file>file:/F:/swingprogram/Laboratory/src/in/laboratory/gui/UrinalysisReport.java</file>
+            <file>file:/F:/swingprogram/Laboratory/src/in/laboratory/entity/controller/WBCDifferentialCountJpaController.java</file>
             <file>file:/F:/swingprogram/Laboratory/src/in/laboratory/entity/Urinalysis.java</file>
+            <file>file:/F:/swingprogram/Laboratory/src/in/laboratory/gui/CompleteBloodCountReport.java</file>
             <file>file:/F:/swingprogram/Laboratory/src/in/laboratory/gui/WBCDifferentialCountFrame.java</file>
             <file>file:/F:/swingprogram/Laboratory/src/in/laboratory/entity/User.java</file>
             <file>file:/F:/swingprogram/Laboratory/src/in/laboratory/entity/Patient.java</file>
             <file>file:/F:/swingprogram/Laboratory/src/in/laboratory/entity/controller/PatientJpaController.java</file>
             <file>file:/F:/swingprogram/Laboratory/src/in/laboratory/entity/Biochemistry.java</file>
             <file>file:/F:/swingprogram/Laboratory/src/in/laboratory/gui/PatientFrame.java</file>
+            <file>file:/F:/swingprogram/Laboratory/src/in/laboratory/gui/temporarytestlist.java</file>
             <file>file:/F:/swingprogram/Laboratory/src/in/laboratory/entity/Role.java</file>
         </group>
     </open-files>

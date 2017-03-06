@@ -223,20 +223,20 @@ public class UrinalysisFrame extends javax.swing.JInternalFrame {
 
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
         // TODO add your handling code here:
-        if(txtTestName.getText().isEmpty()) {
-            Helper.showErrorMessage(this, "Test Name field can not be empty");
-            txtTestName.requestFocus();
-        }
-
-        if(txtResults.getText().isEmpty()) {
-            Helper.showErrorMessage(this, "Result field can not be empty");
-            txtResults.requestFocus();
-        }
-
-        if(txtNormalValues.getText().isEmpty()) {
-            Helper.showErrorMessage(this, "Normal Range field can not be empty");
-            txtNormalValues.requestFocus();
-        }
+//        if(txtTestName.getText().isEmpty()) {
+//            Helper.showErrorMessage(this, "Test Name field can not be empty");
+//            txtTestName.requestFocus();
+//        }
+//
+//        if(txtResults.getText().isEmpty()) {
+//            Helper.showErrorMessage(this, "Result field can not be empty");
+//            txtResults.requestFocus();
+//        }
+//
+//        if(txtNormalValues.getText().isEmpty()) {
+//            Helper.showErrorMessage(this, "Normal Range field can not be empty");
+//            txtNormalValues.requestFocus();
+//        }
 
         in.laboratory.entity.Urinalysis urinalysis =
         new in.laboratory.entity.Urinalysis();
@@ -246,6 +246,7 @@ public class UrinalysisFrame extends javax.swing.JInternalFrame {
         urinalysis.setNormalValues(txtNormalValues.getText().trim());
 
         urinalysiscontroller.create(urinalysis);
+        updateUI();
         Helper.showSuccessMessage(this, "Urinalysis Test entries added successfully");
         txtTestName.setText("");
         txtResults.setText("");
@@ -266,6 +267,7 @@ public class UrinalysisFrame extends javax.swing.JInternalFrame {
         } catch(Exception ex) {
             Logger.getLogger(PatientFrame.class.getName()).log(Level.SEVERE, null, ex);
         }
+        updateUI();
         Helper.showSuccessMessage(this, "Urinalysis Test entries updated successfully");
         txtTestName.setText("");
         txtResults.setText("");
@@ -274,6 +276,7 @@ public class UrinalysisFrame extends javax.swing.JInternalFrame {
 
     private void btnRefreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRefreshActionPerformed
         // TODO add your handling code here:
+        updateUI();
         txtTestName.setText("");
         txtResults.setText("");
         txtNormalValues.setText("");

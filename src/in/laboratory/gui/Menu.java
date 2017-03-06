@@ -60,18 +60,18 @@ public class Menu extends javax.swing.JFrame {
         mnuItemCBC = new javax.swing.JMenuItem();
         mnuItemWBC = new javax.swing.JMenuItem();
         mnuItemUrinalysis = new javax.swing.JMenuItem();
-        mnuTestAllotment = new javax.swing.JMenu();
-        mnuItemHematologyAllotment = new javax.swing.JMenuItem();
-        mnuItemBiochemistryAllotment = new javax.swing.JMenuItem();
-        mnuItemCBCAllotment = new javax.swing.JMenuItem();
-        mnuItemWBCAllotment = new javax.swing.JMenuItem();
-        mnuItemUrinalysisAllotment = new javax.swing.JMenuItem();
         mnuTestReports = new javax.swing.JMenu();
         mnuItemHematologyReport = new javax.swing.JMenuItem();
         mnuItemBiochemistryReport = new javax.swing.JMenuItem();
         mnuItemCBCReport = new javax.swing.JMenuItem();
         mnuItemWBCReport = new javax.swing.JMenuItem();
         mnuItemUrinalysisReport = new javax.swing.JMenuItem();
+        mnuTestAllotment = new javax.swing.JMenu();
+        mnuItemHematologyAllotment = new javax.swing.JMenuItem();
+        mnuItemBiochemistryAllotment = new javax.swing.JMenuItem();
+        mnuItemCBCAllotment = new javax.swing.JMenuItem();
+        mnuItemWBCAllotment = new javax.swing.JMenuItem();
+        mnuItemUrinalysisAllotment = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -176,6 +176,50 @@ public class Menu extends javax.swing.JFrame {
 
         menuBar.add(mnuTestList);
 
+        mnuTestReports.setText("Test Reports");
+
+        mnuItemHematologyReport.setText("Hematology Test Report");
+        mnuItemHematologyReport.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuItemHematologyReportActionPerformed(evt);
+            }
+        });
+        mnuTestReports.add(mnuItemHematologyReport);
+
+        mnuItemBiochemistryReport.setText("Biochemistry Test Report");
+        mnuItemBiochemistryReport.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuItemBiochemistryReportActionPerformed(evt);
+            }
+        });
+        mnuTestReports.add(mnuItemBiochemistryReport);
+
+        mnuItemCBCReport.setText("Complete Blood Count(CBC) Test Report");
+        mnuItemCBCReport.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuItemCBCReportActionPerformed(evt);
+            }
+        });
+        mnuTestReports.add(mnuItemCBCReport);
+
+        mnuItemWBCReport.setText("WBC Differential Count Test Report");
+        mnuItemWBCReport.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuItemWBCReportActionPerformed(evt);
+            }
+        });
+        mnuTestReports.add(mnuItemWBCReport);
+
+        mnuItemUrinalysisReport.setText("Urinalysis Test Report");
+        mnuItemUrinalysisReport.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuItemUrinalysisReportActionPerformed(evt);
+            }
+        });
+        mnuTestReports.add(mnuItemUrinalysisReport);
+
+        menuBar.add(mnuTestReports);
+
         mnuTestAllotment.setText("Test Allotment");
 
         mnuItemHematologyAllotment.setText("Hematology Test Alloted");
@@ -219,35 +263,6 @@ public class Menu extends javax.swing.JFrame {
         mnuTestAllotment.add(mnuItemUrinalysisAllotment);
 
         menuBar.add(mnuTestAllotment);
-
-        mnuTestReports.setText("Test Reports");
-
-        mnuItemHematologyReport.setText("Hematology Test Report");
-        mnuItemHematologyReport.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mnuItemHematologyReportActionPerformed(evt);
-            }
-        });
-        mnuTestReports.add(mnuItemHematologyReport);
-
-        mnuItemBiochemistryReport.setText("Biochemistry Test Report");
-        mnuItemBiochemistryReport.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mnuItemBiochemistryReportActionPerformed(evt);
-            }
-        });
-        mnuTestReports.add(mnuItemBiochemistryReport);
-
-        mnuItemCBCReport.setText("Complete Blood Count(CBC) Test Report");
-        mnuTestReports.add(mnuItemCBCReport);
-
-        mnuItemWBCReport.setText("WBC Differential Count Test Report");
-        mnuTestReports.add(mnuItemWBCReport);
-
-        mnuItemUrinalysisReport.setText("Urinalysis Test Report");
-        mnuTestReports.add(mnuItemUrinalysisReport);
-
-        menuBar.add(mnuTestReports);
 
         setJMenuBar(menuBar);
 
@@ -314,20 +329,6 @@ public class Menu extends javax.swing.JFrame {
         hematology.setVisible(true);
     }//GEN-LAST:event_mnuItemHematologyActionPerformed
 
-    private void mnuItemHematologyAllotmentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuItemHematologyAllotmentActionPerformed
-        // TODO add your handling code here:
-        HematologyTestAllotmentFrame hematologyallotment=new HematologyTestAllotmentFrame();
-        desktopPane.add(hematologyallotment);
-        hematologyallotment.setVisible(true);
-    }//GEN-LAST:event_mnuItemHematologyAllotmentActionPerformed
-
-    private void mnuItemBiochemistryAllotmentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuItemBiochemistryAllotmentActionPerformed
-        // TODO add your handling code here:
-        BiochemistryTestAllotmentFrame biochemistryallotment=new BiochemistryTestAllotmentFrame();
-        desktopPane.add(biochemistryallotment);
-        biochemistryallotment.setVisible(true);
-    }//GEN-LAST:event_mnuItemBiochemistryAllotmentActionPerformed
-
     private void mnuBiochemistryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuBiochemistryActionPerformed
         // TODO add your handling code here:
         BiochemistryFrame biochemistry=new BiochemistryFrame();
@@ -358,11 +359,32 @@ public class Menu extends javax.swing.JFrame {
 
     private void mnuItemHematologyReportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuItemHematologyReportActionPerformed
         // TODO add your handling code here:
+        HematologyReport hematologyreport=new HematologyReport();
+        desktopPane.add(hematologyreport);
+        hematologyreport.setVisible(true);
+        
     }//GEN-LAST:event_mnuItemHematologyReportActionPerformed
 
     private void mnuItemBiochemistryReportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuItemBiochemistryReportActionPerformed
         // TODO add your handling code here:
+        BiochemistryReport biochemistryreport = new BiochemistryReport();
+        desktopPane.add(biochemistryreport);
+        biochemistryreport.setVisible(true);
     }//GEN-LAST:event_mnuItemBiochemistryReportActionPerformed
+
+    private void mnuItemHematologyAllotmentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuItemHematologyAllotmentActionPerformed
+        // TODO add your handling code here:
+        HematologyTestAllotmentFrame hematologyallotment=new HematologyTestAllotmentFrame();
+        desktopPane.add(hematologyallotment);
+        hematologyallotment.setVisible(true);
+    }//GEN-LAST:event_mnuItemHematologyAllotmentActionPerformed
+
+    private void mnuItemBiochemistryAllotmentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuItemBiochemistryAllotmentActionPerformed
+        // TODO add your handling code here:
+        BiochemistryTestAllotmentFrame biochemistryallotment=new BiochemistryTestAllotmentFrame();
+        desktopPane.add(biochemistryallotment);
+        biochemistryallotment.setVisible(true);
+    }//GEN-LAST:event_mnuItemBiochemistryAllotmentActionPerformed
 
     private void mnuItemCBCAllotmentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuItemCBCAllotmentActionPerformed
         // TODO add your handling code here:
@@ -371,6 +393,13 @@ public class Menu extends javax.swing.JFrame {
         cbcallotment.setVisible(true);
     }//GEN-LAST:event_mnuItemCBCAllotmentActionPerformed
 
+    private void mnuItemWBCAllotmentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuItemWBCAllotmentActionPerformed
+        // TODO add your handling code here:
+        WBCDifferentialCountTestAllotmentFrame wbcdifferentialcountallotment = new WBCDifferentialCountTestAllotmentFrame();
+        desktopPane.add(wbcdifferentialcountallotment);
+        wbcdifferentialcountallotment.setVisible(true);
+    }//GEN-LAST:event_mnuItemWBCAllotmentActionPerformed
+
     private void mnuItemUrinalysisAllotmentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuItemUrinalysisAllotmentActionPerformed
         // TODO add your handling code here:
         UrinalysisTestAllotmentFrame urinalysisallotment = new UrinalysisTestAllotmentFrame();
@@ -378,12 +407,26 @@ public class Menu extends javax.swing.JFrame {
         urinalysisallotment.setVisible(true);
     }//GEN-LAST:event_mnuItemUrinalysisAllotmentActionPerformed
 
-    private void mnuItemWBCAllotmentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuItemWBCAllotmentActionPerformed
+    private void mnuItemCBCReportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuItemCBCReportActionPerformed
         // TODO add your handling code here:
-        WBCDifferentialCountTestAllotmentFrame wbcdifferentialcountallotment = new WBCDifferentialCountTestAllotmentFrame();
-        desktopPane.add(wbcdifferentialcountallotment);
-        wbcdifferentialcountallotment.setVisible(true);
-    }//GEN-LAST:event_mnuItemWBCAllotmentActionPerformed
+        CompleteBloodCountReport completebloodcountreport = new CompleteBloodCountReport();
+        desktopPane.add(completebloodcountreport);
+        completebloodcountreport.setVisible(true);
+    }//GEN-LAST:event_mnuItemCBCReportActionPerformed
+
+    private void mnuItemWBCReportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuItemWBCReportActionPerformed
+        // TODO add your handling code here:
+        WBCDifferentialCountReport wbcdifferentialcountreport = new WBCDifferentialCountReport();
+        desktopPane.add(wbcdifferentialcountreport);
+        wbcdifferentialcountreport.setVisible(true);
+    }//GEN-LAST:event_mnuItemWBCReportActionPerformed
+
+    private void mnuItemUrinalysisReportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuItemUrinalysisReportActionPerformed
+        // TODO add your handling code here:
+        UrinalysisReport urinalysisreport = new UrinalysisReport();
+        desktopPane.add(urinalysisreport);
+        urinalysisreport.setVisible(true);
+    }//GEN-LAST:event_mnuItemUrinalysisReportActionPerformed
 
     /**
      * @param args the command line arguments

@@ -36,7 +36,8 @@ public class Wbcdifferentialcount implements Serializable {
     private PropertyChangeSupport changeSupport = new PropertyChangeSupport(this);
     private static final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    //@GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @Basic(optional = false)
     @Column(name = "ID")
     private Long id;
@@ -116,7 +117,7 @@ public class Wbcdifferentialcount implements Serializable {
 
     @Override
     public String toString() {
-        return "in.laboratory.gui.Wbcdifferentialcount[ id=" + id + " ]";
+        return testname;
     }
 
     public void addPropertyChangeListener(PropertyChangeListener listener) {

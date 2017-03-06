@@ -4,8 +4,7 @@
  * and open the template in the editor.
  */
 package in.laboratory.gui;
-
-import in.laboratory.entity.controller.CompleteBloodCountJpaController;
+import in.laboratory.entity.controller.CompletebloodcountJpaController;
 import in.laboratory.utilities.Helper;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -15,7 +14,7 @@ import java.util.logging.Logger;
  * @author sakshi
  */
 public class CompleteBloodCountFrame extends javax.swing.JInternalFrame {
-    private CompleteBloodCountJpaController completebloodcountcontroller;
+    private CompletebloodcountJpaController completebloodcountcontroller;
 
     /**
      * Creates new form CompleteBloodCountFrame
@@ -39,9 +38,9 @@ public class CompleteBloodCountFrame extends javax.swing.JInternalFrame {
         LaboratoryPUEntityManager = java.beans.Beans.isDesignTime() ? null : javax.persistence.Persistence.createEntityManagerFactory("LaboratoryPU").createEntityManager();
         completebloodcountQuery = java.beans.Beans.isDesignTime() ? null : LaboratoryPUEntityManager.createQuery("SELECT c FROM Completebloodcount c");
         completebloodcountList = java.beans.Beans.isDesignTime() ? java.util.Collections.emptyList() : completebloodcountQuery.getResultList();
-        jPanel5 = new javax.swing.JPanel();
-        lblSearch2 = new javax.swing.JLabel();
-        cmbtestName = new javax.swing.JComboBox();
+        jPanel3 = new javax.swing.JPanel();
+        lblSearch = new javax.swing.JLabel();
+        cmbTestName = new javax.swing.JComboBox();
         jPanel1 = new javax.swing.JPanel();
         lblTestName = new javax.swing.JLabel();
         lblResults = new javax.swing.JLabel();
@@ -55,35 +54,35 @@ public class CompleteBloodCountFrame extends javax.swing.JInternalFrame {
         btnRefresh = new javax.swing.JButton();
 
         setClosable(true);
-        setTitle("Complete Blood Count(CBC) Test");
+        setTitle("Complete Blood Count Test");
 
-        lblSearch2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        lblSearch2.setText("Search By Test Name");
+        lblSearch.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        lblSearch.setText("Search By Test Name");
 
         org.jdesktop.beansbinding.ELProperty eLProperty = org.jdesktop.beansbinding.ELProperty.create("${resultList}");
-        org.jdesktop.swingbinding.JComboBoxBinding jComboBoxBinding = org.jdesktop.swingbinding.SwingBindings.createJComboBoxBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, completebloodcountQuery, eLProperty, cmbtestName);
+        org.jdesktop.swingbinding.JComboBoxBinding jComboBoxBinding = org.jdesktop.swingbinding.SwingBindings.createJComboBoxBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, completebloodcountQuery, eLProperty, cmbTestName);
         bindingGroup.addBinding(jComboBoxBinding);
-        org.jdesktop.beansbinding.Binding binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, completebloodcountQuery, org.jdesktop.beansbinding.ELProperty.create("${firstResult}"), cmbtestName, org.jdesktop.beansbinding.BeanProperty.create("selectedItem"));
+        org.jdesktop.beansbinding.Binding binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, completebloodcountQuery, org.jdesktop.beansbinding.ELProperty.create("${firstResult}"), cmbTestName, org.jdesktop.beansbinding.BeanProperty.create("selectedItem"));
         bindingGroup.addBinding(binding);
 
-        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
-        jPanel5.setLayout(jPanel5Layout);
-        jPanel5Layout.setHorizontalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(21, 21, 21)
-                .addComponent(lblSearch2)
+                .addComponent(lblSearch)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(cmbtestName, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(cmbTestName, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(25, 25, 25))
         );
-        jPanel5Layout.setVerticalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblSearch2)
-                    .addComponent(cmbtestName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblSearch)
+                    .addComponent(cmbTestName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -96,13 +95,13 @@ public class CompleteBloodCountFrame extends javax.swing.JInternalFrame {
         lblNormalValues.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         lblNormalValues.setText("Normal Values");
 
-        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, cmbtestName, org.jdesktop.beansbinding.ELProperty.create("${selectedItem.testName}"), txtTestName, org.jdesktop.beansbinding.BeanProperty.create("text"));
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, cmbTestName, org.jdesktop.beansbinding.ELProperty.create("${selectedItem.testname}"), txtTestName, org.jdesktop.beansbinding.BeanProperty.create("text"));
         bindingGroup.addBinding(binding);
 
-        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, cmbtestName, org.jdesktop.beansbinding.ELProperty.create("${selectedItem.results}"), txtResults, org.jdesktop.beansbinding.BeanProperty.create("text"));
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, cmbTestName, org.jdesktop.beansbinding.ELProperty.create("${selectedItem.results}"), txtResults, org.jdesktop.beansbinding.BeanProperty.create("text"));
         bindingGroup.addBinding(binding);
 
-        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, cmbtestName, org.jdesktop.beansbinding.ELProperty.create("${selectedItem.normalValues}"), txtNormalValues, org.jdesktop.beansbinding.BeanProperty.create("text"));
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, cmbTestName, org.jdesktop.beansbinding.ELProperty.create("${selectedItem.normalvalues}"), txtNormalValues, org.jdesktop.beansbinding.BeanProperty.create("text"));
         bindingGroup.addBinding(binding);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -201,14 +200,14 @@ public class CompleteBloodCountFrame extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -223,30 +222,31 @@ public class CompleteBloodCountFrame extends javax.swing.JInternalFrame {
 
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
         // TODO add your handling code here:
-        if(txtTestName.getText().isEmpty()) {
-            Helper.showErrorMessage(this, "Test Name field can not be empty");
-            txtTestName.requestFocus();
-        }
+//        if(txtTestName.getText().isEmpty()) {
+//                Helper.showErrorMessage(this, "Test Name field can not be empty");
+//            txtTestName.requestFocus();
+//        }
+//
+//        if(txtResults.getText().isEmpty()) {
+//                 Helper.showErrorMessage(this, "Result field can not be empty");
+//            txtResults.requestFocus();
+//        }
+//
+//        if(txtNormalValues.getText().isEmpty()) {
+//                  Helper.showErrorMessage(this, "Normal Range field can not be empty");
+//            txtNormalValues.requestFocus();
+//        }
+        
+        in.laboratory.gui.Completebloodcount completebloodcount =
+                new in.laboratory.gui.Completebloodcount();
 
-        if(txtResults.getText().isEmpty()) {
-            Helper.showErrorMessage(this, "Result field can not be empty");
-            txtResults.requestFocus();
-        }
-
-        if(txtNormalValues.getText().isEmpty()) {
-            Helper.showErrorMessage(this, "Normal Range field can not be empty");
-            txtNormalValues.requestFocus();
-        }
-
-        in.laboratory.entity.CompleteBloodCount completebloodcount =
-        new in.laboratory.entity.CompleteBloodCount();
-
-        completebloodcount.setTestName(txtTestName.getText().trim());
+        completebloodcount.setTestname(txtTestName.getText().trim());
         completebloodcount.setResults(txtResults.getText().trim());
-        completebloodcount.setNormalValues(txtNormalValues.getText().trim());
+        completebloodcount.setNormalvalues(txtNormalValues.getText().trim());
 
-        completebloodcountcontroller.create(completebloodcount);
-        Helper.showSuccessMessage(this, "CBC Test entries added successfully");
+          completebloodcountcontroller.create(completebloodcount);
+          updateUI();
+          Helper.showSuccessMessage(this, "CBC Test entries added successfully");
         txtTestName.setText("");
         txtResults.setText("");
         txtNormalValues.setText("");
@@ -254,19 +254,21 @@ public class CompleteBloodCountFrame extends javax.swing.JInternalFrame {
 
     private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
         // TODO add your handling code here:
-        in.laboratory.entity.CompleteBloodCount completebloodcount =
-        (in.laboratory.entity.CompleteBloodCount) cmbtestName.getSelectedItem();
 
-        completebloodcount.setTestName(txtTestName.getText().trim());
+        in.laboratory.gui.Completebloodcount completebloodcount =
+                (in.laboratory.gui.Completebloodcount) cmbTestName.getSelectedItem();
+
+        completebloodcount.setTestname(txtTestName.getText().trim());
         completebloodcount.setResults(txtResults.getText().trim());
-        completebloodcount.setNormalValues(txtNormalValues.getText().trim());
+        completebloodcount.setNormalvalues(txtNormalValues.getText().trim());
 
         try{
-            completebloodcountcontroller.edit(completebloodcount);
+                     completebloodcountcontroller.edit(completebloodcount);
         } catch(Exception ex) {
-            Logger.getLogger(PatientFrame.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(PatientFrame.class.getName()).log(Level.SEVERE, null, ex);
         }
-        Helper.showSuccessMessage(this, "CBC Test entries updated successfully");
+        updateUI();
+           Helper.showSuccessMessage(this, "CBC Test entries updated successfully");
         txtTestName.setText("");
         txtResults.setText("");
         txtNormalValues.setText("");
@@ -274,6 +276,7 @@ public class CompleteBloodCountFrame extends javax.swing.JInternalFrame {
 
     private void btnRefreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRefreshActionPerformed
         // TODO add your handling code here:
+        updateUI();
         txtTestName.setText("");
         txtResults.setText("");
         txtNormalValues.setText("");
@@ -287,20 +290,14 @@ public class CompleteBloodCountFrame extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnSave;
     private javax.swing.JButton btnUpdate;
     private javax.swing.JComboBox cmbTestName;
-    private javax.swing.JComboBox cmbTestName1;
-    private javax.swing.JComboBox cmbtestName;
     private java.util.List<in.laboratory.gui.Completebloodcount> completebloodcountList;
     private javax.persistence.Query completebloodcountQuery;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel5;
     private javax.swing.JLabel lblNormalValues;
     private javax.swing.JLabel lblResults;
     private javax.swing.JLabel lblSearch;
-    private javax.swing.JLabel lblSearch1;
-    private javax.swing.JLabel lblSearch2;
     private javax.swing.JLabel lblTestName;
     private javax.swing.JTextField txtNormalValues;
     private javax.swing.JTextField txtResults;

@@ -410,8 +410,9 @@ public class PatientFrame extends javax.swing.JInternalFrame {
         patient.setUpdatedAt(new Date());
 
         patientcontroller.create(patient);
-
+        updateUI();
         Helper.showSuccessMessage(this, "New Customer Created Successfully!");
+        
         btnSave.setEnabled(false);
         btnNewRecord.setEnabled(true);
         txtAddress.setText("");
@@ -462,8 +463,9 @@ public class PatientFrame extends javax.swing.JInternalFrame {
         } catch (Exception ex) {
             Logger.getLogger(PatientFrame.class.getName()).log(Level.SEVERE, null, ex);
         }
-
+        cmbPatient.updateUI();
         Helper.showSuccessMessage(this, "Record Updated Successfully!");
+        
 //        btnSave.setEnabled(false);
 //        btnNewRecord.setEnabled(true);
 //        txtAddress.setText("");
@@ -482,6 +484,7 @@ public class PatientFrame extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnUpdateActionPerformed
 
     private void btnRefreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRefreshActionPerformed
+        cmbPatient.updateUI();
         txtAddress.setText("");
         txtCity.setText("");
         txtEmail.setText("");

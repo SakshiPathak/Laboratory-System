@@ -112,6 +112,53 @@
             </MenuItem>
           </SubComponents>
         </Menu>
+        <Menu class="javax.swing.JMenu" name="mnuTestReports">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Test Reports"/>
+          </Properties>
+          <SubComponents>
+            <MenuItem class="javax.swing.JMenuItem" name="mnuItemHematologyReport">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Hematology Test Report"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mnuItemHematologyReportActionPerformed"/>
+              </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="mnuItemBiochemistryReport">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Biochemistry Test Report"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mnuItemBiochemistryReportActionPerformed"/>
+              </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="mnuItemCBCReport">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Complete Blood Count(CBC) Test Report"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mnuItemCBCReportActionPerformed"/>
+              </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="mnuItemWBCReport">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="WBC Differential Count Test Report"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mnuItemWBCReportActionPerformed"/>
+              </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="mnuItemUrinalysisReport">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Urinalysis Test Report"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mnuItemUrinalysisReportActionPerformed"/>
+              </Events>
+            </MenuItem>
+          </SubComponents>
+        </Menu>
         <Menu class="javax.swing.JMenu" name="mnuTestAllotment">
           <Properties>
             <Property name="text" type="java.lang.String" value="Test Allotment"/>
@@ -156,44 +203,6 @@
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mnuItemUrinalysisAllotmentActionPerformed"/>
               </Events>
-            </MenuItem>
-          </SubComponents>
-        </Menu>
-        <Menu class="javax.swing.JMenu" name="mnuTestReports">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Test Reports"/>
-          </Properties>
-          <SubComponents>
-            <MenuItem class="javax.swing.JMenuItem" name="mnuItemHematologyReport">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Hematology Test Report"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mnuItemHematologyReportActionPerformed"/>
-              </Events>
-            </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="mnuItemBiochemistryReport">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Biochemistry Test Report"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mnuItemBiochemistryReportActionPerformed"/>
-              </Events>
-            </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="mnuItemCBCReport">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Complete Blood Count(CBC) Test Report"/>
-              </Properties>
-            </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="mnuItemWBCReport">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="WBC Differential Count Test Report"/>
-              </Properties>
-            </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="mnuItemUrinalysisReport">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Urinalysis Test Report"/>
-              </Properties>
             </MenuItem>
           </SubComponents>
         </Menu>

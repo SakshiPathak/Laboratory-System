@@ -7,9 +7,11 @@
     <class>in.laboratory.entity.Role</class>
     <class>in.laboratory.entity.Hematology</class>
     <class>in.laboratory.entity.Biochemistry</class>
+    <class>in.laboratory.entity.Urinalysis</class>
     <class>in.laboratory.entity.CompleteBloodCount</class>
     <class>in.laboratory.entity.WBCDifferentialCount</class>
-    <class>in.laboratory.entity.Urinalysis</class>
+    <class>in.laboratory.gui.Wbcdifferentialcount</class>
+    <class>in.laboratory.gui.Completebloodcount</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/laboratory?zeroDateTimeBehavior=convertToNull"/>
       <property name="javax.persistence.jdbc.user" value="root"/>
