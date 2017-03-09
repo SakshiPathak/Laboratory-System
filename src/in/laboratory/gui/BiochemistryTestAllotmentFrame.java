@@ -5,19 +5,48 @@
  */
 package in.laboratory.gui;
 
+import in.laboratory.entity.controller.FinalTestReportJpaController;
+import in.laboratory.utilities.DateConverter;
+import in.laboratory.utilities.Helper;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JComboBox;
+import javax.swing.JTextField;
+
 /**
  *
  * @author sakshi
  */
 public class BiochemistryTestAllotmentFrame extends javax.swing.JInternalFrame {
+    private FinalTestReportJpaController finaltestreportcontroller;
 
     /**
      * Creates new form BiochemistryTestAllotmentFrame
      */
     public BiochemistryTestAllotmentFrame() {
         initComponents();
+        
+        finaltestreportcontroller = Helper.getFinalTestReportControllerInstance();
     }
 
+    
+    private void getLabDetails(JComboBox cmb, JTextField txtresult){
+        if(cmb.getSelectedIndex()>0)/*||cmbTestName2.getSelectedItem().toString().equals(evt)||cmbTestName3.getSelectedItem().toString().equals(evt)||cmbTestName4.getSelectedItem().toString().equals(evt)||cmbTestName5.getSelectedItem().toString().equals(evt)||cmbTestName6.getSelectedItem().toString().equals(evt)||cmbTestName7.getSelectedItem().toString().equals(evt)||cmbTestName8.getSelectedItem().toString().equals(evt)||cmbTestName9.getSelectedItem().toString().equals(evt)||cmbTestName10.getSelectedItem().toString().equals(evt)||cmbTestName11.getSelectedItem().toString().equals(evt)||cmbTestName12.getSelectedItem().toString().equals(evt)||cmbTestName13.getSelectedItem().toString().equals(evt)||cmbTestName14.getSelectedItem().toString().equals(evt)||cmbTestName15.getSelectedItem().toString().equals(evt)||cmbTestName16.getSelectedItem().toString().equals(evt)||cmbTestName17.getSelectedItem().toString().equals(evt)||cmbTestName18.getSelectedItem().toString().equals(evt))*/{
+          in.laboratory.entity.FinalTestReport finaltestreport =
+        (in.laboratory.entity.FinalTestReport) cmb.getSelectedItem();
+
+        //biochemistry.setTestName(txtTestName.getText().trim());
+        finaltestreport.setResult(txtresult.getText().trim());
+        //biochemistry.setNormalValues(txtNormalValues.getText().trim());
+
+        try{
+            finaltestreportcontroller.edit(finaltestreport);
+        } catch(Exception ex) {
+            Logger.getLogger(PatientFrame.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        //Helper.showSuccessMessage(this, "Biochemistry Result updated successfully");
+        }
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -170,6 +199,10 @@ public class BiochemistryTestAllotmentFrame extends javax.swing.JInternalFrame {
 
         lblDate.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         lblDate.setText("Date");
+
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, cmbSearchByPatientName, org.jdesktop.beansbinding.ELProperty.create("${selectedItem.createdAt}"), txtDate, org.jdesktop.beansbinding.BeanProperty.create("text"));
+        binding.setConverter(new DateConverter());
+        bindingGroup.addBinding(binding);
 
         javax.swing.GroupLayout pnlPatientDetailsLayout = new javax.swing.GroupLayout(pnlPatientDetails);
         pnlPatientDetails.setLayout(pnlPatientDetailsLayout);
@@ -836,6 +869,25 @@ public class BiochemistryTestAllotmentFrame extends javax.swing.JInternalFrame {
 
     private void cmbTestName4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbTestName4ActionPerformed
         // TODO add your handling code here:
+        getLabDetails(cmbTestName1, txtResults1);
+        getLabDetails(cmbTestName2, txtResults2);
+        getLabDetails(cmbTestName3, txtResults3);
+        getLabDetails(cmbTestName4, txtResults4);
+        getLabDetails(cmbTestName5, txtResults5);
+        getLabDetails(cmbTestName6, txtResults6);
+        getLabDetails(cmbTestName7, txtResults7);
+        getLabDetails(cmbTestName8, txtResults8);
+        getLabDetails(cmbTestName9, txtResults9);
+        getLabDetails(cmbTestName10, txtResults10);
+        getLabDetails(cmbTestName11, txtResults11);
+        getLabDetails(cmbTestName12, txtResults12);
+        getLabDetails(cmbTestName13, txtResults13);
+        getLabDetails(cmbTestName14, txtResults14);
+        getLabDetails(cmbTestName15, txtResults15);
+        getLabDetails(cmbTestName16, txtResults16);
+        getLabDetails(cmbTestName17, txtResults17);
+        getLabDetails(cmbTestName18, txtResults18);
+        
     }//GEN-LAST:event_cmbTestName4ActionPerformed
 
     private void cmbSearchByPatientNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbSearchByPatientNameActionPerformed
@@ -844,6 +896,7 @@ public class BiochemistryTestAllotmentFrame extends javax.swing.JInternalFrame {
 
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
         // TODO add your handling code here:
+        
     }//GEN-LAST:event_btnSaveActionPerformed
 
 

@@ -28,6 +28,8 @@ public class PatientFrame extends javax.swing.JInternalFrame {
         
         getRootPane().setDefaultButton(btnSave);
         
+        updateUI();
+        
         //patientController = Helper.getPatientControllerInstance();
     }
 
@@ -463,7 +465,7 @@ public class PatientFrame extends javax.swing.JInternalFrame {
         } catch (Exception ex) {
             Logger.getLogger(PatientFrame.class.getName()).log(Level.SEVERE, null, ex);
         }
-        cmbPatient.updateUI();
+        updateUI();
         Helper.showSuccessMessage(this, "Record Updated Successfully!");
         
 //        btnSave.setEnabled(false);
@@ -484,7 +486,7 @@ public class PatientFrame extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnUpdateActionPerformed
 
     private void btnRefreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRefreshActionPerformed
-        cmbPatient.updateUI();
+        updateUI();
         txtAddress.setText("");
         txtCity.setText("");
         txtEmail.setText("");

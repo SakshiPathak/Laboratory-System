@@ -5,6 +5,8 @@
  */
 package in.laboratory.gui;
 
+import in.laboratory.utilities.DateConverter;
+
 /**
  *
  * @author sakshi
@@ -164,6 +166,10 @@ public class WBCDifferentialCountTestAllotmentFrame extends javax.swing.JInterna
 
         lblDate.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         lblDate.setText("Date");
+
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, cmbSearchByPatientName, org.jdesktop.beansbinding.ELProperty.create("${selectedItem.createdAt}"), txtDate, org.jdesktop.beansbinding.BeanProperty.create("text"));
+        binding.setConverter(new DateConverter());
+        bindingGroup.addBinding(binding);
 
         javax.swing.GroupLayout pnlPatientDetailsLayout = new javax.swing.GroupLayout(pnlPatientDetails);
         pnlPatientDetails.setLayout(pnlPatientDetailsLayout);

@@ -5,14 +5,12 @@
  */
 package in.laboratory.entity;
 
-import in.laboratory.gui.Completebloodcount;
-import in.laboratory.gui.Wbcdifferentialcount;
 import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.ManyToOne;
 
 /**
  *
@@ -24,16 +22,52 @@ public class FinalTestReport implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
-//    private String test_type;
-//    private String result;
-//    private String normalvalues;
-//    @OneToMany
-//    private Hematology hematology;
-//    private Biochemistry biochemistry;
-//    private Completebloodcount completebloodcount;
-//    private Wbcdifferentialcount wbcdifferentialcount;
-//    private Urinalysis urinalysis;
-//    private Patient patient;
+    private String categoryName;
+    private String testName;
+    @ManyToOne
+    private Patient patient;
+    private String result;
+    private String normalvalues;
+
+    public String getCategoryName() {
+        return categoryName;
+    }
+
+    public void setCategoryName(String categoryName) {
+        this.categoryName = categoryName;
+    }
+
+    public String getTestName() {
+        return testName;
+    }
+
+    public void setTestName(String testName) {
+        this.testName = testName;
+    }
+
+    public String getResult() {
+        return result;
+    }
+
+    public void setResult(String result) {
+        this.result = result;
+    }
+
+    public String getNormalvalues() {
+        return normalvalues;
+    }
+
+    public Patient getPatient() {
+        return patient;
+    }
+
+    public void setPatient(Patient patient) {
+        this.patient = patient;
+    }
+
+    public void setNormalvalues(String normalvalues) {
+        this.normalvalues = normalvalues;
+    }
 
     public Long getId() {
         return id;
