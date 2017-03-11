@@ -6,6 +6,7 @@
 package in.laboratory.entity.controller;
 
 import in.laboratory.entity.Patient;
+//import in.laboratory.entity.Role;
 import in.laboratory.entity.controller.exceptions.NonexistentEntityException;
 import java.io.Serializable;
 import java.util.List;
@@ -117,6 +118,17 @@ public class PatientJpaController implements Serializable {
         EntityManager em = getEntityManager();
         try {
             return em.find(Patient.class, id);
+        } finally {
+            em.close();
+        }
+    }
+    
+    public Patient findPatientByName(String firstname) {
+        EntityManager em = getEntityManager();
+        try {
+            Query q = em.createQuery("SELECT p FROM Patient p WHERE p.firstName = :firstName");
+            q.setParameter(1, firstname);
+            return (Patient)q.getSingleResult();
         } finally {
             em.close();
         }

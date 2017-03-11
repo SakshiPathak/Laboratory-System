@@ -34,6 +34,9 @@ public class FinalTestReport extends javax.swing.JInternalFrame {
         bindingGroup = new org.jdesktop.beansbinding.BindingGroup();
 
         PopupMenu = new javax.swing.JPopupMenu();
+        LaboratoryPUEntityManager = java.beans.Beans.isDesignTime() ? null : javax.persistence.Persistence.createEntityManagerFactory("LaboratoryPU").createEntityManager();
+        finaltestreport_1Query = java.beans.Beans.isDesignTime() ? null : LaboratoryPUEntityManager.createQuery("SELECT f FROM Finaltestreport_1 f");
+        finaltestreport_1List = java.beans.Beans.isDesignTime() ? java.util.Collections.emptyList() : finaltestreport_1Query.getResultList();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblFinalReport = new javax.swing.JTable();
         jPanel1 = new javax.swing.JPanel();
@@ -43,17 +46,27 @@ public class FinalTestReport extends javax.swing.JInternalFrame {
         setClosable(true);
         setTitle("Final Patient's Test Report");
 
-        tblFinalReport.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
+        org.jdesktop.swingbinding.JTableBinding jTableBinding = org.jdesktop.swingbinding.SwingBindings.createJTableBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, finaltestreport_1List, tblFinalReport);
+        org.jdesktop.swingbinding.JTableBinding.ColumnBinding columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${id}"));
+        columnBinding.setColumnName("Id");
+        columnBinding.setColumnClass(Long.class);
+        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${patientId}"));
+        columnBinding.setColumnName("Patient Id");
+        columnBinding.setColumnClass(java.math.BigInteger.class);
+        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${categoryname}"));
+        columnBinding.setColumnName("Categoryname");
+        columnBinding.setColumnClass(String.class);
+        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${testname}"));
+        columnBinding.setColumnName("Testname");
+        columnBinding.setColumnClass(String.class);
+        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${result}"));
+        columnBinding.setColumnName("Result");
+        columnBinding.setColumnClass(String.class);
+        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${normalvalues}"));
+        columnBinding.setColumnName("Normalvalues");
+        columnBinding.setColumnClass(String.class);
+        bindingGroup.addBinding(jTableBinding);
+        jTableBinding.bind();
         tblFinalReport.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tblFinalReportMouseClicked(evt);
@@ -135,7 +148,10 @@ public class FinalTestReport extends javax.swing.JInternalFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.persistence.EntityManager LaboratoryPUEntityManager;
     private javax.swing.JPopupMenu PopupMenu;
+    private java.util.List<in.laboratory.gui.Finaltestreport_1> finaltestreport_1List;
+    private javax.persistence.Query finaltestreport_1Query;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblSearch;

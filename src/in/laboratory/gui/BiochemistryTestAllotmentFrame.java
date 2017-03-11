@@ -6,6 +6,7 @@
 package in.laboratory.gui;
 
 import in.laboratory.entity.controller.FinalTestReportJpaController;
+import in.laboratory.entity.controller.PatientJpaController;
 import in.laboratory.utilities.DateConverter;
 import in.laboratory.utilities.Helper;
 import java.util.logging.Level;
@@ -19,6 +20,7 @@ import javax.swing.JTextField;
  */
 public class BiochemistryTestAllotmentFrame extends javax.swing.JInternalFrame {
     private FinalTestReportJpaController finaltestreportcontroller;
+    private PatientJpaController patientcontroller;
 
     /**
      * Creates new form BiochemistryTestAllotmentFrame
@@ -27,24 +29,27 @@ public class BiochemistryTestAllotmentFrame extends javax.swing.JInternalFrame {
         initComponents();
         
         finaltestreportcontroller = Helper.getFinalTestReportControllerInstance();
+        patientcontroller = Helper.getPatientControllerInstance();
     }
 
     
-    private void getLabDetails(JComboBox cmb, JTextField txtresult){
+    private void getLabDetails(JComboBox cmb, JTextField txtresult, JTextField txtnormalvalues){
         if(cmb.getSelectedIndex()>0)/*||cmbTestName2.getSelectedItem().toString().equals(evt)||cmbTestName3.getSelectedItem().toString().equals(evt)||cmbTestName4.getSelectedItem().toString().equals(evt)||cmbTestName5.getSelectedItem().toString().equals(evt)||cmbTestName6.getSelectedItem().toString().equals(evt)||cmbTestName7.getSelectedItem().toString().equals(evt)||cmbTestName8.getSelectedItem().toString().equals(evt)||cmbTestName9.getSelectedItem().toString().equals(evt)||cmbTestName10.getSelectedItem().toString().equals(evt)||cmbTestName11.getSelectedItem().toString().equals(evt)||cmbTestName12.getSelectedItem().toString().equals(evt)||cmbTestName13.getSelectedItem().toString().equals(evt)||cmbTestName14.getSelectedItem().toString().equals(evt)||cmbTestName15.getSelectedItem().toString().equals(evt)||cmbTestName16.getSelectedItem().toString().equals(evt)||cmbTestName17.getSelectedItem().toString().equals(evt)||cmbTestName18.getSelectedItem().toString().equals(evt))*/{
           in.laboratory.entity.FinalTestReport finaltestreport =
         (in.laboratory.entity.FinalTestReport) cmb.getSelectedItem();
 
-        //biochemistry.setTestName(txtTestName.getText().trim());
+        finaltestreport.setTestName(cmb.getSelectedItem().toString());
         finaltestreport.setResult(txtresult.getText().trim());
-        //biochemistry.setNormalValues(txtNormalValues.getText().trim());
+        finaltestreport.setNormalvalues(txtnormalvalues.getText().trim());
+ //       finaltestreport.setPatient(patientcontroller.findPatientByName(cmbSearchByPatientName.getSelectedItem().toString()));
 
-        try{
-            finaltestreportcontroller.edit(finaltestreport);
-        } catch(Exception ex) {
-            Logger.getLogger(PatientFrame.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        //Helper.showSuccessMessage(this, "Biochemistry Result updated successfully");
+        
+            finaltestreportcontroller.create(finaltestreport);
+        
+        Helper.showSuccessMessage(this, "Biochemistry Result updated successfully");
+            //System.out.println(cmbSearchByPatientName.getSelectedItem().toString());
+            //System.out.println(cmb.getSelectedItem().toString());
+            
         }
     }
     /**
@@ -869,24 +874,7 @@ public class BiochemistryTestAllotmentFrame extends javax.swing.JInternalFrame {
 
     private void cmbTestName4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbTestName4ActionPerformed
         // TODO add your handling code here:
-        getLabDetails(cmbTestName1, txtResults1);
-        getLabDetails(cmbTestName2, txtResults2);
-        getLabDetails(cmbTestName3, txtResults3);
-        getLabDetails(cmbTestName4, txtResults4);
-        getLabDetails(cmbTestName5, txtResults5);
-        getLabDetails(cmbTestName6, txtResults6);
-        getLabDetails(cmbTestName7, txtResults7);
-        getLabDetails(cmbTestName8, txtResults8);
-        getLabDetails(cmbTestName9, txtResults9);
-        getLabDetails(cmbTestName10, txtResults10);
-        getLabDetails(cmbTestName11, txtResults11);
-        getLabDetails(cmbTestName12, txtResults12);
-        getLabDetails(cmbTestName13, txtResults13);
-        getLabDetails(cmbTestName14, txtResults14);
-        getLabDetails(cmbTestName15, txtResults15);
-        getLabDetails(cmbTestName16, txtResults16);
-        getLabDetails(cmbTestName17, txtResults17);
-        getLabDetails(cmbTestName18, txtResults18);
+        
         
     }//GEN-LAST:event_cmbTestName4ActionPerformed
 
@@ -896,6 +884,24 @@ public class BiochemistryTestAllotmentFrame extends javax.swing.JInternalFrame {
 
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
         // TODO add your handling code here:
+        getLabDetails(cmbTestName1, txtResults1, txtNormalValues1);
+        getLabDetails(cmbTestName2, txtResults2, txtNormalValues2);
+        getLabDetails(cmbTestName3, txtResults3, txtNormalValues3);
+        getLabDetails(cmbTestName4, txtResults4, txtNormalValues4);
+        getLabDetails(cmbTestName5, txtResults5, txtNormalValues5);
+        getLabDetails(cmbTestName6, txtResults6, txtNormalValues6);
+        getLabDetails(cmbTestName7, txtResults7, txtNormalValues7);
+        getLabDetails(cmbTestName8, txtResults8, txtNormalValues8);
+        getLabDetails(cmbTestName9, txtResults9, txtNormalValues9);
+        getLabDetails(cmbTestName10, txtResults10, txtNormalValues10);
+        getLabDetails(cmbTestName11, txtResults11, txtNormalValues11);
+        getLabDetails(cmbTestName12, txtResults12, txtNormalValues12);
+        getLabDetails(cmbTestName13, txtResults13, txtNormalValues13);
+        getLabDetails(cmbTestName14, txtResults14, txtNormalValues14);
+        getLabDetails(cmbTestName15, txtResults15, txtNormalValues15);
+        getLabDetails(cmbTestName16, txtResults16, txtNormalValues16);
+        getLabDetails(cmbTestName17, txtResults17, txtNormalValues17);
+        getLabDetails(cmbTestName18, txtResults18, txtNormalValues18);
         
     }//GEN-LAST:event_btnSaveActionPerformed
 
