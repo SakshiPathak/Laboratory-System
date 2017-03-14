@@ -7,6 +7,7 @@ package in.laboratory.gui;
 
 import in.laboratory.entity.controller.FinalTestReportJpaController;
 import in.laboratory.entity.controller.PatientJpaController;
+import in.laboratory.entity.controller.RoleJpaController;
 import in.laboratory.utilities.DateConverter;
 import in.laboratory.utilities.Helper;
 import java.util.logging.Level;
@@ -21,6 +22,7 @@ import javax.swing.JTextField;
 public class BiochemistryTestAllotmentFrame extends javax.swing.JInternalFrame {
     private FinalTestReportJpaController finaltestreportcontroller;
     private PatientJpaController patientcontroller;
+    private RoleJpaController rolecontroller;
 
     /**
      * Creates new form BiochemistryTestAllotmentFrame
@@ -30,18 +32,20 @@ public class BiochemistryTestAllotmentFrame extends javax.swing.JInternalFrame {
         
         finaltestreportcontroller = Helper.getFinalTestReportControllerInstance();
         patientcontroller = Helper.getPatientControllerInstance();
+        rolecontroller = Helper.getRoleControllerInstance();
     }
 
     
     private void getLabDetails(JComboBox cmb, JTextField txtresult, JTextField txtnormalvalues){
         if(cmb.getSelectedIndex()>0)/*||cmbTestName2.getSelectedItem().toString().equals(evt)||cmbTestName3.getSelectedItem().toString().equals(evt)||cmbTestName4.getSelectedItem().toString().equals(evt)||cmbTestName5.getSelectedItem().toString().equals(evt)||cmbTestName6.getSelectedItem().toString().equals(evt)||cmbTestName7.getSelectedItem().toString().equals(evt)||cmbTestName8.getSelectedItem().toString().equals(evt)||cmbTestName9.getSelectedItem().toString().equals(evt)||cmbTestName10.getSelectedItem().toString().equals(evt)||cmbTestName11.getSelectedItem().toString().equals(evt)||cmbTestName12.getSelectedItem().toString().equals(evt)||cmbTestName13.getSelectedItem().toString().equals(evt)||cmbTestName14.getSelectedItem().toString().equals(evt)||cmbTestName15.getSelectedItem().toString().equals(evt)||cmbTestName16.getSelectedItem().toString().equals(evt)||cmbTestName17.getSelectedItem().toString().equals(evt)||cmbTestName18.getSelectedItem().toString().equals(evt))*/{
-          in.laboratory.entity.FinalTestReport finaltestreport =
-        (in.laboratory.entity.FinalTestReport) cmb.getSelectedItem();
-
+        in.laboratory.entity.FinalTestReport finaltestreport = new in.laboratory.entity.FinalTestReport();
+        finaltestreport.setCategoryName(txtTestName.getText().trim());
         finaltestreport.setTestName(cmb.getSelectedItem().toString());
         finaltestreport.setResult(txtresult.getText().trim());
         finaltestreport.setNormalvalues(txtnormalvalues.getText().trim());
- //       finaltestreport.setPatient(patientcontroller.findPatientByName(cmbSearchByPatientName.getSelectedItem().toString()));
+        //finaltestreport.setPatient(cmbSearchByPatientName.getSelectedItem().toString());
+        finaltestreport.setPatient(patientcontroller.findPatientByName(cmbSearchByPatientName.getSelectedItem().toString()));
+        //finaltestreport.setRole(rolecontroller.findRoleByName(cmbRo.getSelectedItem().toString()));
 
         
             finaltestreportcontroller.create(finaltestreport);
@@ -155,6 +159,9 @@ public class BiochemistryTestAllotmentFrame extends javax.swing.JInternalFrame {
         txtResults18 = new javax.swing.JTextField();
         cmbTestName18 = new javax.swing.JComboBox();
         txtNormalValues18 = new javax.swing.JTextField();
+        jPanel1 = new javax.swing.JPanel();
+        lblTestName = new javax.swing.JLabel();
+        txtTestName = new javax.swing.JTextField();
 
         setClosable(true);
         setTitle("Biochemistry Test Allotment");
@@ -289,10 +296,10 @@ public class BiochemistryTestAllotmentFrame extends javax.swing.JInternalFrame {
         pnlButtons.setLayout(pnlButtonsLayout);
         pnlButtonsLayout.setHorizontalGroup(
             pnlButtonsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlButtonsLayout.createSequentialGroup()
-                .addContainerGap(165, Short.MAX_VALUE)
+            .addGroup(pnlButtonsLayout.createSequentialGroup()
+                .addGap(154, 154, 154)
                 .addComponent(btnSave)
-                .addGap(132, 132, 132))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         pnlButtonsLayout.setVerticalGroup(
             pnlButtonsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -302,7 +309,7 @@ public class BiochemistryTestAllotmentFrame extends javax.swing.JInternalFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        pnlHematologyTest.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Biochemistry Test", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 13))); // NOI18N
+        pnlHematologyTest.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Biochemistry Sub Tests", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 13))); // NOI18N
 
         jLabel7.setText("1.");
 
@@ -841,15 +848,44 @@ public class BiochemistryTestAllotmentFrame extends javax.swing.JInternalFrame {
                 .addContainerGap())
         );
 
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Test Name", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12))); // NOI18N
+
+        lblTestName.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        lblTestName.setText("Test Name");
+
+        txtTestName.setText("Biochemistry");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(38, 38, 38)
+                .addComponent(lblTestName)
+                .addGap(18, 18, 18)
+                .addComponent(txtTestName, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblTestName)
+                    .addComponent(txtTestName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(pnlPatientDetails, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(pnlButtons, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(pnlPatientDetails, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(pnlButtons, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(pnlHematologyTest, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -859,7 +895,9 @@ public class BiochemistryTestAllotmentFrame extends javax.swing.JInternalFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(4, 4, 4)
                 .addComponent(pnlPatientDetails, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(98, 98, 98)
+                .addGap(18, 18, 18)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(pnlButtons, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
@@ -948,12 +986,14 @@ public class BiochemistryTestAllotmentFrame extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblAge;
     private javax.swing.JLabel lblDate;
     private javax.swing.JLabel lblGender;
     private javax.swing.JLabel lblPatientName;
     private javax.swing.JLabel lblReferencedBy;
     private javax.swing.JLabel lblSearchByPatientName;
+    private javax.swing.JLabel lblTestName;
     private java.util.List<in.laboratory.gui.Patient> patientList;
     private javax.persistence.Query patientQuery;
     private javax.swing.JPanel pnlButtons;
@@ -1000,6 +1040,7 @@ public class BiochemistryTestAllotmentFrame extends javax.swing.JInternalFrame {
     private javax.swing.JTextField txtResults7;
     private javax.swing.JTextField txtResults8;
     private javax.swing.JTextField txtResults9;
+    private javax.swing.JTextField txtTestName;
     private org.jdesktop.beansbinding.BindingGroup bindingGroup;
     // End of variables declaration//GEN-END:variables
 }

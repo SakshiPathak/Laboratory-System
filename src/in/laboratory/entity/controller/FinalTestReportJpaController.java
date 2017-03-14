@@ -7,6 +7,7 @@ package in.laboratory.entity.controller;
 
 import in.laboratory.entity.FinalTestReport;
 import in.laboratory.entity.controller.exceptions.NonexistentEntityException;
+import in.laboratory.gui.Finaltestreport_1;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.EntityManager;
@@ -133,6 +134,10 @@ public class FinalTestReportJpaController implements Serializable {
         } finally {
             em.close();
         }
+    }
+
+    public void create(Finaltestreport_1 finaltestreport) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 }

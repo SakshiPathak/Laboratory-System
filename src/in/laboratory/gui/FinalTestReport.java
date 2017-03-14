@@ -5,11 +5,6 @@
  */
 package in.laboratory.gui;
 
-import in.laboratory.utilities.Helper;
-import in.laboratory.utilities.RowSorterConverter;
-import java.awt.Point;
-import javax.swing.SwingUtilities;
-
 /**
  *
  * @author sakshi
@@ -33,20 +28,44 @@ public class FinalTestReport extends javax.swing.JInternalFrame {
     private void initComponents() {
         bindingGroup = new org.jdesktop.beansbinding.BindingGroup();
 
-        PopupMenu = new javax.swing.JPopupMenu();
         LaboratoryPUEntityManager = java.beans.Beans.isDesignTime() ? null : javax.persistence.Persistence.createEntityManagerFactory("LaboratoryPU").createEntityManager();
         finaltestreport_1Query = java.beans.Beans.isDesignTime() ? null : LaboratoryPUEntityManager.createQuery("SELECT f FROM Finaltestreport_1 f");
         finaltestreport_1List = java.beans.Beans.isDesignTime() ? java.util.Collections.emptyList() : finaltestreport_1Query.getResultList();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tblFinalReport = new javax.swing.JTable();
         jPanel1 = new javax.swing.JPanel();
         lblSearch = new javax.swing.JLabel();
         txtSearch = new javax.swing.JTextField();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tblReport = new javax.swing.JTable();
 
         setClosable(true);
-        setTitle("Final Patient's Test Report");
+        setMaximizable(true);
+        setTitle("Final Test Report");
 
-        org.jdesktop.swingbinding.JTableBinding jTableBinding = org.jdesktop.swingbinding.SwingBindings.createJTableBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, finaltestreport_1List, tblFinalReport);
+        lblSearch.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        lblSearch.setText("Search By Patient's ID, Name, Phone No and Date");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblSearch)
+                .addGap(18, 18, 18)
+                .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(44, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblSearch)
+                    .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        org.jdesktop.swingbinding.JTableBinding jTableBinding = org.jdesktop.swingbinding.SwingBindings.createJTableBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, finaltestreport_1List, tblReport);
         org.jdesktop.swingbinding.JTableBinding.ColumnBinding columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${id}"));
         columnBinding.setColumnName("Id");
         columnBinding.setColumnClass(Long.class);
@@ -65,41 +84,16 @@ public class FinalTestReport extends javax.swing.JInternalFrame {
         columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${normalvalues}"));
         columnBinding.setColumnName("Normalvalues");
         columnBinding.setColumnClass(String.class);
+        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${createdat}"));
+        columnBinding.setColumnName("Createdat");
+        columnBinding.setColumnClass(java.util.Date.class);
+        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${patientname}"));
+        columnBinding.setColumnName("Patient Name");
+        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${phonenumber}"));
+        columnBinding.setColumnName("Phone Number");
         bindingGroup.addBinding(jTableBinding);
         jTableBinding.bind();
-        tblFinalReport.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tblFinalReportMouseClicked(evt);
-            }
-        });
-        jScrollPane1.setViewportView(tblFinalReport);
-
-        lblSearch.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        lblSearch.setText("Search by ID, Name, PhoneNo and Date");
-
-        org.jdesktop.beansbinding.Binding binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, tblFinalReport, org.jdesktop.beansbinding.ELProperty.create("${rowSorter}"), txtSearch, org.jdesktop.beansbinding.BeanProperty.create("text"));
-        bindingGroup.addBinding(binding);
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(lblSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(59, 59, 59)
-                .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(207, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblSearch)
-                    .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
+        jScrollPane1.setViewportView(tblReport);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -108,18 +102,18 @@ public class FinalTestReport extends javax.swing.JInternalFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 288, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         bindingGroup.bind();
@@ -127,35 +121,15 @@ public class FinalTestReport extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void tblFinalReportMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblFinalReportMouseClicked
-        // TODO add your handling code here:
-        if (SwingUtilities.isLeftMouseButton(evt)) {
-            if (PopupMenu.isVisible()) PopupMenu.setVisible(false);
-        }
-        
-        if (SwingUtilities.isRightMouseButton(evt)) {
-            Point p = evt.getPoint();
-            int row = tblFinalReport.rowAtPoint(p);
-            int col = tblFinalReport.columnAtPoint(p);
-        
-            if ((col == -1) || (row == -1)) return;
-
-            tblFinalReport.setRowSelectionInterval(row, row);
-            PopupMenu.setLocation(evt.getLocationOnScreen());
-            PopupMenu.setVisible(true);
-        }
-    }//GEN-LAST:event_tblFinalReportMouseClicked
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.persistence.EntityManager LaboratoryPUEntityManager;
-    private javax.swing.JPopupMenu PopupMenu;
     private java.util.List<in.laboratory.gui.Finaltestreport_1> finaltestreport_1List;
     private javax.persistence.Query finaltestreport_1Query;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblSearch;
-    private javax.swing.JTable tblFinalReport;
+    private javax.swing.JTable tblReport;
     private javax.swing.JTextField txtSearch;
     private org.jdesktop.beansbinding.BindingGroup bindingGroup;
     // End of variables declaration//GEN-END:variables

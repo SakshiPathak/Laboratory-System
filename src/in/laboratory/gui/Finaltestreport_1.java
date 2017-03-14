@@ -9,6 +9,7 @@ import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 import java.io.Serializable;
 import java.math.BigInteger;
+import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -18,6 +19,8 @@ import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.persistence.Transient;
 
 /**
@@ -30,6 +33,7 @@ import javax.persistence.Transient;
     @NamedQuery(name = "Finaltestreport_1.findAll", query = "SELECT f FROM Finaltestreport_1 f"),
     @NamedQuery(name = "Finaltestreport_1.findById", query = "SELECT f FROM Finaltestreport_1 f WHERE f.id = :id"),
     @NamedQuery(name = "Finaltestreport_1.findByCategoryname", query = "SELECT f FROM Finaltestreport_1 f WHERE f.categoryname = :categoryname"),
+    @NamedQuery(name = "Finaltestreport_1.findByCreatedat", query = "SELECT f FROM Finaltestreport_1 f WHERE f.createdat = :createdat"),
     @NamedQuery(name = "Finaltestreport_1.findByNormalvalues", query = "SELECT f FROM Finaltestreport_1 f WHERE f.normalvalues = :normalvalues"),
     @NamedQuery(name = "Finaltestreport_1.findByResult", query = "SELECT f FROM Finaltestreport_1 f WHERE f.result = :result"),
     @NamedQuery(name = "Finaltestreport_1.findByTestname", query = "SELECT f FROM Finaltestreport_1 f WHERE f.testname = :testname"),
@@ -45,6 +49,9 @@ public class Finaltestreport_1 implements Serializable {
     private Long id;
     @Column(name = "CATEGORYNAME")
     private String categoryname;
+    @Column(name = "CREATEDAT")
+    @Temporal(TemporalType.DATE)
+    private Date createdat;
     @Column(name = "NORMALVALUES")
     private String normalvalues;
     @Column(name = "RESULT")
@@ -79,6 +86,16 @@ public class Finaltestreport_1 implements Serializable {
         String oldCategoryname = this.categoryname;
         this.categoryname = categoryname;
         changeSupport.firePropertyChange("categoryname", oldCategoryname, categoryname);
+    }
+
+    public Date getCreatedat() {
+        return createdat;
+    }
+
+    public void setCreatedat(Date createdat) {
+        Date oldCreatedat = this.createdat;
+        this.createdat = createdat;
+        changeSupport.firePropertyChange("createdat", oldCreatedat, createdat);
     }
 
     public String getNormalvalues() {

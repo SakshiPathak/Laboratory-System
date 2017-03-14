@@ -6,11 +6,13 @@
 package in.laboratory.entity;
 
 import java.io.Serializable;
+import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.Temporal;
 
 /**
  *
@@ -24,10 +26,39 @@ public class FinalTestReport implements Serializable {
     private Long id;
     private String categoryName;
     private String testName;
+    @Temporal(javax.persistence.TemporalType.DATE)
+    private Date createdAt;
     @ManyToOne
     private Patient patient;
     private String result;
     private String normalvalues;
+    
+
+    public FinalTestReport() {
+    }
+
+    public FinalTestReport(String categoryName, String testName, Date createdAt, Patient patient, String result, String normalvalues) {
+        this.categoryName = categoryName;
+        this.testName = testName;
+        this.createdAt = createdAt;
+        this.patient = patient;
+        this.result = result;
+        this.normalvalues = normalvalues;
+    }
+
+   
+
+    public Date getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(Date createdAt) {
+        this.createdAt = createdAt;
+    }
+
+   
+    
+    
 
     public String getCategoryName() {
         return categoryName;

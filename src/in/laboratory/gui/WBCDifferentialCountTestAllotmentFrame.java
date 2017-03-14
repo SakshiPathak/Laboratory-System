@@ -5,19 +5,48 @@
  */
 package in.laboratory.gui;
 
+import in.laboratory.entity.controller.FinalTestReportJpaController;
+import in.laboratory.entity.controller.PatientJpaController;
 import in.laboratory.utilities.DateConverter;
+import in.laboratory.utilities.Helper;
+import javax.swing.JComboBox;
+import javax.swing.JTextField;
 
 /**
  *
  * @author sakshi
  */
 public class WBCDifferentialCountTestAllotmentFrame extends javax.swing.JInternalFrame {
+    private FinalTestReportJpaController finaltestreportcontroller;
+    private PatientJpaController patientcontroller;
 
     /**
      * Creates new form WBCDifferentialCountTestAllotment
      */
     public WBCDifferentialCountTestAllotmentFrame() {
         initComponents();
+        
+        finaltestreportcontroller = Helper.getFinalTestReportControllerInstance();
+        patientcontroller = Helper.getPatientControllerInstance();
+    }
+    
+    private void getLabDetails(JComboBox cmb, JTextField txtresult, JTextField txtnormalvalues){
+        if(cmb.getSelectedIndex()>0)/*||cmbTestName2.getSelectedItem().toString().equals(evt)||cmbTestName3.getSelectedItem().toString().equals(evt)||cmbTestName4.getSelectedItem().toString().equals(evt)||cmbTestName5.getSelectedItem().toString().equals(evt)||cmbTestName6.getSelectedItem().toString().equals(evt)||cmbTestName7.getSelectedItem().toString().equals(evt)||cmbTestName8.getSelectedItem().toString().equals(evt)||cmbTestName9.getSelectedItem().toString().equals(evt)||cmbTestName10.getSelectedItem().toString().equals(evt)||cmbTestName11.getSelectedItem().toString().equals(evt)||cmbTestName12.getSelectedItem().toString().equals(evt)||cmbTestName13.getSelectedItem().toString().equals(evt)||cmbTestName14.getSelectedItem().toString().equals(evt)||cmbTestName15.getSelectedItem().toString().equals(evt)||cmbTestName16.getSelectedItem().toString().equals(evt)||cmbTestName17.getSelectedItem().toString().equals(evt)||cmbTestName18.getSelectedItem().toString().equals(evt))*/{
+        in.laboratory.entity.FinalTestReport finaltestreport = new in.laboratory.entity.FinalTestReport();
+        finaltestreport.setCategoryName(txtTestName.getText().trim());
+        finaltestreport.setTestName(cmb.getSelectedItem().toString());
+        finaltestreport.setResult(txtresult.getText().trim());
+        finaltestreport.setNormalvalues(txtnormalvalues.getText().trim());
+        finaltestreport.setPatient(patientcontroller.findPatientByName(cmbSearchByPatientName.getSelectedItem().toString()));
+
+        
+            finaltestreportcontroller.create(finaltestreport);
+        
+        Helper.showSuccessMessage(this, "Biochemistry Result updated successfully");
+            //System.out.println(cmbSearchByPatientName.getSelectedItem().toString());
+            //System.out.println(cmb.getSelectedItem().toString());
+            
+        }
     }
 
     /**
@@ -123,6 +152,9 @@ public class WBCDifferentialCountTestAllotmentFrame extends javax.swing.JInterna
         txtNormalValues18 = new javax.swing.JTextField();
         pnlButtons = new javax.swing.JPanel();
         btnSave = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
+        lblTestName = new javax.swing.JLabel();
+        txtTestName = new javax.swing.JTextField();
 
         setClosable(true);
         setTitle("WBC Differential Count Test Allotment");
@@ -236,7 +268,7 @@ public class WBCDifferentialCountTestAllotmentFrame extends javax.swing.JInterna
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        pnlHematologyTest.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "WBC Differential Count Test", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 13))); // NOI18N
+        pnlHematologyTest.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "WBC Differential Count Sub Tests", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 13))); // NOI18N
 
         jLabel7.setText("1.");
 
@@ -790,16 +822,44 @@ public class WBCDifferentialCountTestAllotmentFrame extends javax.swing.JInterna
         pnlButtons.setLayout(pnlButtonsLayout);
         pnlButtonsLayout.setHorizontalGroup(
             pnlButtonsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlButtonsLayout.createSequentialGroup()
-                .addContainerGap(165, Short.MAX_VALUE)
+            .addGroup(pnlButtonsLayout.createSequentialGroup()
+                .addGap(155, 155, 155)
                 .addComponent(btnSave)
-                .addGap(132, 132, 132))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         pnlButtonsLayout.setVerticalGroup(
             pnlButtonsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlButtonsLayout.createSequentialGroup()
-                .addContainerGap()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlButtonsLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnSave)
+                .addContainerGap())
+        );
+
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Test Name", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12))); // NOI18N
+
+        lblTestName.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        lblTestName.setText("Test Name");
+
+        txtTestName.setText("WBC Differential Count");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(38, 38, 38)
+                .addComponent(lblTestName)
+                .addGap(18, 18, 18)
+                .addComponent(txtTestName, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblTestName)
+                    .addComponent(txtTestName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -809,9 +869,10 @@ public class WBCDifferentialCountTestAllotmentFrame extends javax.swing.JInterna
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(pnlPatientDetails, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(pnlButtons, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(pnlPatientDetails, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(pnlButtons, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(pnlHematologyTest, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -821,7 +882,9 @@ public class WBCDifferentialCountTestAllotmentFrame extends javax.swing.JInterna
             .addGroup(layout.createSequentialGroup()
                 .addGap(4, 4, 4)
                 .addComponent(pnlPatientDetails, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(98, 98, 98)
+                .addGap(18, 18, 18)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(14, 14, 14)
                 .addComponent(pnlButtons, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
@@ -844,6 +907,24 @@ public class WBCDifferentialCountTestAllotmentFrame extends javax.swing.JInterna
 
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
         // TODO add your handling code here:
+        getLabDetails(cmbTestName1, txtResults1, txtNormalValues1);
+        getLabDetails(cmbTestName2, txtResults2, txtNormalValues2);
+        getLabDetails(cmbTestName3, txtResults3, txtNormalValues3);
+        getLabDetails(cmbTestName4, txtResults4, txtNormalValues4);
+        getLabDetails(cmbTestName5, txtResults5, txtNormalValues5);
+        getLabDetails(cmbTestName6, txtResults6, txtNormalValues6);
+        getLabDetails(cmbTestName7, txtResults7, txtNormalValues7);
+        getLabDetails(cmbTestName8, txtResults8, txtNormalValues8);
+        getLabDetails(cmbTestName9, txtResults9, txtNormalValues9);
+        getLabDetails(cmbTestName10, txtResults10, txtNormalValues10);
+        getLabDetails(cmbTestName11, txtResults11, txtNormalValues11);
+        getLabDetails(cmbTestName12, txtResults12, txtNormalValues12);
+        getLabDetails(cmbTestName13, txtResults13, txtNormalValues13);
+        getLabDetails(cmbTestName14, txtResults14, txtNormalValues14);
+        getLabDetails(cmbTestName15, txtResults15, txtNormalValues15);
+        getLabDetails(cmbTestName16, txtResults16, txtNormalValues16);
+        getLabDetails(cmbTestName17, txtResults17, txtNormalValues17);
+        getLabDetails(cmbTestName18, txtResults18, txtNormalValues18);
     }//GEN-LAST:event_btnSaveActionPerformed
 
 
@@ -887,12 +968,14 @@ public class WBCDifferentialCountTestAllotmentFrame extends javax.swing.JInterna
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblAge;
     private javax.swing.JLabel lblDate;
     private javax.swing.JLabel lblGender;
     private javax.swing.JLabel lblPatientName;
     private javax.swing.JLabel lblReferencedBy;
     private javax.swing.JLabel lblSearchByPatientName;
+    private javax.swing.JLabel lblTestName;
     private java.util.List<in.laboratory.gui.Patient> patientList;
     private javax.persistence.Query patientQuery;
     private javax.swing.JPanel pnlButtons;
@@ -939,6 +1022,7 @@ public class WBCDifferentialCountTestAllotmentFrame extends javax.swing.JInterna
     private javax.swing.JTextField txtResults7;
     private javax.swing.JTextField txtResults8;
     private javax.swing.JTextField txtResults9;
+    private javax.swing.JTextField txtTestName;
     private java.util.List<in.laboratory.gui.Wbcdifferentialcount> wbcdifferentialcountList;
     private javax.persistence.Query wbcdifferentialcountQuery;
     private org.jdesktop.beansbinding.BindingGroup bindingGroup;

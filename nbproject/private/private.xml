@@ -5,8 +5,13 @@
         <group>
             <file>file:/F:/swingprogram/Laboratory/src/in/laboratory/entity/controller/RoleJpaController.java</file>
             <file>file:/F:/swingprogram/Laboratory/src/in/laboratory/gui/BiochemistryTestAllotmentFrame.java</file>
+            <file>file:/F:/swingprogram/Laboratory/src/in/laboratory/gui/FinalTestReport.java</file>
+            <file>file:/F:/swingprogram/Laboratory/src/in/laboratory/gui/RegisterFrame.java</file>
+            <file>file:/F:/swingprogram/Laboratory/src/in/laboratory/entity/controller/PatientJpaController.java</file>
+            <file>file:/F:/swingprogram/Laboratory/src/in/laboratory/entity/Patient.java</file>
             <file>file:/F:/swingprogram/Laboratory/src/in/laboratory/entity/FinalTestReport.java</file>
             <file>file:/F:/swingprogram/Laboratory/src/in/laboratory/gui/PatientFrame.java</file>
+            <file>file:/F:/swingprogram/Laboratory/src/in/laboratory/gui/HematologyReport.java</file>
         </group>
     </open-files>
 </project-private>
